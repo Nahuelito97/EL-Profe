@@ -15,7 +15,7 @@ class CreateDirectionTable extends Migration
     {
         Schema::create('direction', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('');
+            $table->string('name');
             $table->string('surname');
             $table->string('dni');
             $table->timestamps();
