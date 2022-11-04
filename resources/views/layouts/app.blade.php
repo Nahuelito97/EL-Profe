@@ -1,92 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>@yield('title')</title>
+
+<!-- Google Font: Source Sans Pro -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="{{ asset('admilt') }}/plugins/fontawesome-free/css/all.min.css">
+<!-- Ionicons -->
+<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+<!-- Tempusdominus Bootstrap 4 -->
+<link rel="stylesheet"
+    href="{{ asset('admilt') }}/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+<!-- iCheck -->
+<link rel="stylesheet" href="{{ asset('admilt') }}/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+<!-- JQVMap -->
+<link rel="stylesheet" href="{{ asset('admilt') }}/plugins/jqvmap/jqvmap.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="{{ asset('admilt') }}/dist/css/adminlte.min.css">
+<!-- overlayScrollbars -->
+<link rel="stylesheet" href="{{ asset('admilt') }}/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+<!-- Daterange picker -->
+<link rel="stylesheet" href="{{ asset('admilt') }}/plugins/daterangepicker/daterangepicker.css">
+<!-- summernote -->
+<link rel="stylesheet" href="{{ asset('admilt') }}/plugins/summernote/summernote-bs4.min.css">
+</head>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>@yield('title')</title>
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('front-end/assets/img/logo/brand.png') }}">
-
-    <link rel="stylesheet" href="{{ asset('adminlt') }}/plugins/fontawesome-free/css/all.min.css">
-    <link rel="stylesheet" href="{{ asset('adminlt') }}/css/adminlte.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-
-    <!-- DataTables -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.6/css/responsive.bootstrap4.min.css">
-
-
-
-    @yield('style')
-</head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
 
-    <!-- Content Wrapper. Contains page content -->
     <div class="wrapper">
+        @include('sections.navbar')
         @include('sections.aside')
         @yield('content')
+        @include('sections.footer')
+
+    </div>
     </div>
 
-
-
-    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-        @csrf
-    </form>
-    <!-- DataTables -->
-    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
-    <script type="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
-    <script type="https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js"></script>
-    <script type="https://cdn.datatables.net/responsive/2.2.6/js/responsive.bootstrap4.min.js"></script>
-    <!-- page script -->
-    <script>
-        $(function() {
-            $("#categorias").DataTable();
-            $("#clientes").DataTable({
-                //"ajax": '../ajax/data/arrays.txt',
-                "responsive": true,
-                "autoWidth": false,
-                "language": {
-                    "lengthMenu": "Mostrar _MENU_ registros por página",
-                    "zeroRecords": "Lo que estas buscando no se encuentra en la base de datos - reintente",
-                    "info": "Mostrando registros _PAGE_ de _PAGES_",
-                    "infoEmpty": "No hay registros similares a su busqueda",
-                    "infoFiltered": "(filtrado de _MAX_ registros totales)",
-                    "search": "Buscar:",
-                    "paginate": {
-                        'next': "Siguiente",
-                        'previous': "Anterior"
-                    }
-                }
-            });
-
-        });
-    </script>
-
-    <script src="{{ asset('adminlt/plugins/datatables-bs4/js/dataTables.bootstrap4.js') }}"></script>
-
-    <!-- REQUIRED SCRIPTS -->
     <!-- jQuery -->
-    <script src="{{ asset('adminlt') }}/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -lt->
-    <script src="{{ asset('adminlt') }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE App -lt->
-    <script src="{{ asset('adminlt') }}/js/adminlte.min.js"></script>
-    <script src="{{ asset('adminlt') }}/js/bs-custom-file-input.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    @yield('script')
+    <script src="{{ asset('admilt/plugins/jquery/jquery.min.js') }}"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="{{ asset('admilt/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
-        @if (Session::has('success'))
-            toastr.success("{{ Session::get('success') }}");
-        @endif
-        $(document).ready(function() {
-            bsCustomFileInput.init()
-        })
+        $.widget.bridge('uibutton', $.ui.button)
     </script>
+    <!-- Bootstrap 4 -->
+    <script src="{{ asset('admilt/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <!-- ChartJS -->
+    <script src="{{ asset('admilt/plugins/chart.js/Chart.min.js') }}"></script>
+    <!-- Sparkline -->
+    <script src="{{ asset('admilt/plugins/sparklines/sparkline.js') }}"></script>
+    <!-- JQVMap -->
+    <script src="{{ asset('admilt/plugins/jqvmap/jquery.vmap.min.js') }}"></script>
+    <script src="{{ asset('admilt/plugins/jqvmap/maps/jquery.vmap.usa.js') }}"></script>
+    <!-- jQuery Knob Chart -->
+    <script src="{{ asset('admilt/plugins/jquery-knob/jquery.knob.min.js') }}"></script>
+    <!-- daterangepicker -->
+    <script src="{{ asset('admilt/plugins/moment/moment.min.js') }}"></script>
+    <script src="{{ asset('admilt/plugins/daterangepicker/daterangepicker.js') }}"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="{{ asset('admilt/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+    <!-- Summernote -->
+    <script src="{{ asset('admilt/plugins/summernote/summernote-bs4.min.js') }}"></script>
+    <!-- overlayScrollbars -->
+    <script src="{{ asset('admilt/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
+    <!-- AdminLTE App -->
+    <script src="{{ asset('admilt/dist/js/adminlte.js') }}"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="{{ asset('admilt/dist/js/demo.js') }}"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+   // <script src="{{ asset('admilt/dist/js/pages/dashboard.js') }}"></script>
 
 </body>
+
 </html>
