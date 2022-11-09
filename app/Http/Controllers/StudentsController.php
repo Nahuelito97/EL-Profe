@@ -6,12 +6,13 @@ use App\Students;
 use Illuminate\Http\Request;
 use App\Http\Requests\Student\StoreRequest;
 use App\Http\Requests\Student\UpdateeRequest;
+use Session;
 
 class StudentsController extends Controller
 {
     public function index()
     {
-        $studentss = Students::get();
+        $studentss = Students::orderBy('id', 'ASC')->paginate(10);
         return view('admin.students.index', compact('studentss'));
 
     }
@@ -49,6 +50,12 @@ class StudentsController extends Controller
 
     public function destroy(Students $students)
     {
-        $students->delete();
+        if ($students) {
+            $students->delete();
+
+            Session::flash('success', 'Tag deleted successfully');
+        }
+
+        return redirect()->back();
     }
 }

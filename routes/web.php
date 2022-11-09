@@ -28,7 +28,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/dashboard','DashboardController@index')->name('dashboard');
 
     //rutas para las demas secciones del sistema
-    Route::resource('student', 'StudentsController');
+    Route::resource('studentss', 'StudentsController');
     /*Route::resource('tag', 'TagController');
     Route::resource('post', 'PostController');
     Route::resource('user', 'UserController');

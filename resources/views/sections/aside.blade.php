@@ -29,27 +29,33 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
 
-                <a href="#" class="nav-link">
+                    <a href="#" class="nav-link">
 
-                    <h5>
-                        <i class="left fas fa-cogs"></i>
-                        <p class="badge badge-danger text-uppercase">
-                            Administrador
-                        </p>
-                    </h5>
-                </a>
+                        <h5>
+                            <i class="left fas fa-cogs"></i>
+                            <p class="badge badge-danger text-uppercase">
+                                Administrador
+                            </p>
+                        </h5>
+                    </a>
+
+
 
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>
-                            Dashboard
-                        </p>
-                    </a>
+                    @can('admin.dashboard')
+                        <a href="{{ route('dashboard') }}"
+                            class="nav-link {{ request()->is('admin/dashboard') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Dashboard
+                            </p>
+                        </a>
+                    @endcan
                 </li>
 
                 <li class="nav-item">
+
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
@@ -59,19 +65,16 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('student.create') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Crear</p>
+                            <a href="{{ route('studentss.index') }}"
+                                class="nav-link {{ request()->is('admin/studentss*') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-tags"></i>
+                                <p>
+                                    Estudiantes
+                                </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Top Navigation + Sidebar</p>
-                            </a>
-                        </li>
-
                     </ul>
+
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
