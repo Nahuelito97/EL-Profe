@@ -9,6 +9,7 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     @include('admin.students.section')
+
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
@@ -18,7 +19,7 @@
             <!-- general form elements disabled -->
             <div class="card card-warning">
               <div class="card-header">
-                <h3 class="card-title">Editar Alumno.</h3>
+                <h3 class="card-title">Información del libro seleccionado.</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -33,6 +34,8 @@
 
                   <div class="row">
 
+
+
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="name" class="label text-center">Name....</label>
@@ -41,7 +44,11 @@
                         value="{{ old('name',  $studentss->name) }}" autocomplete="name"
                         disabled="disabled"
                         autofocus>
-
+                          @error('name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                          @enderror
                       </div>
                     </div>
                     <div class="col-md-6">
@@ -87,7 +94,7 @@
                       <div class="form-group">
                         <label for="phone" class="label text-center">Phone</label>
                         <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror text-center"
-                        name="phone" value="{{ old('phone',  $studentss->phone) }}" autocomplete="phone" autofocus>
+                        name="phone" value="{{ old('phone',  $studentss->phone) }}" autocomplete="phone" autofocus disabled="disabled">
                             @error('phone')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -99,7 +106,7 @@
                       <div class="form-group">
                         <label for="email" class="label text-center">Email</label>
                         <input id="email" type="text" class="form-control @error('email') is-invalid @enderror text-center"
-                        name="email" value="{{ old('email',  $studentss->email) }}" autocomplete="email" autofocus>
+                        name="email" value="{{ old('email',  $studentss->email) }}" autocomplete="email" autofocus disabled="disabled">
                             @error('email')
                               <span class="invalid-feedback" role="alert">
                                   <strong>{{ $message }}</strong>
@@ -122,12 +129,10 @@
                     </div>
                   </div>
 
-
-                  <div class="card-footer">
+                  <div class="modal-footer">
                     <a class="btn btn-primary btn-rounded" href="{{ route('studentss.index') }}">Volver</a>
 
-                    <button type="submit" class="btn btn-lg btn-primary">Actualizar</button>
-                </div>
+                  </div>
                 </form>
 
               </div>

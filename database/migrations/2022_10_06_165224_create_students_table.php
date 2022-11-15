@@ -22,8 +22,7 @@ class CreateStudentsTable extends Migration
             $table->string('phone')->nullable()->unique();
             $table->string('email')->nullable()->unique();
             $table->string('date_of_address');
-            $table->boolean('borrado')->default(0);
-
+            $table->softDeletes();
             $table->timestamps();
         });
     }

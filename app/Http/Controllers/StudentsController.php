@@ -30,32 +30,37 @@ class StudentsController extends Controller
     }
 
 
-    public function show(Students $students)
+    public function show(Students $studentss)
     {
-        return view('admin.students.show', compact('students'));
+        return view('admin.students.show', compact('studentss'));
     }
 
-    public function edit(Students $students)
+    public function edit(Students $studentss)
     {
-        return view('admin.students.show', compact('students'));
+        return view('admin.students.edit', compact('studentss'));
     }
 
 
-    public function update(UpdateeRequest $request, Students $students)
+    public function update(UpdateeRequest $request, Students $studentss)
     {
-      $students->update($request->all());
+      $studentss->update($request->all());
       return redirect()->route('studentss.index');
     }
 
 
-    public function destroy(Students $students)
+    public function destroy($id)
     {
-        if ($students) {
-            $students->delete();
-
-            Session::flash('success', 'Tag deleted successfully');
+        $studentss = Students::find($id);
+        if (!$studentss) {
+            Session::flash("error","The student doesn't exist");
+            return redirect()->back();
         }
-
-        return redirect()->back();
+        $studentss->delete();
+        Session::flash('success', 'Student deleted successfully');
+        return redirect(route('studentss.index'));
+        /*$studentss->update([
+            'borrado' => 1,
+        ]);
+        return redirect(route('studentss.index'));*/
     }
 }

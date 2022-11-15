@@ -2,7 +2,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: black">
     <!-- Brand Logo -->
     <a href="{{ route('dashboard') }}" class="brand-link">
-        <img src="{{ asset('admilt/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
+        <img src="{{ asset('melody/images/institution.jpg') }}" alt="AdminLTE Logo"
+        class="brand-image img-circle elevation-3" style="opacity: .8" width="50" height="40"
             class="brand-image img-circle elevation-3" style="opacity: .8">
         <span style="margin-top: 8px; margin-left:7px; color:white; font-size:20px">
             <span class="text-danger">{</span><span class="text-uppercase"> {{ config('app.name', 'El-Profe') }}
@@ -16,8 +17,9 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{ asset('admilt/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
-                    class="brand-image img-circle elevation-3" style="opacity: .8" width="50" height="40">
+                <img src="{{ asset('melody/images/institution.jpg') }}" alt="AdminLTE Logo"
+                            class="brand-image img-circle elevation-3" style="opacity: .8" width="50" height="40">
+
             </div>
             <div class="info">
                 <a href="#" class="d-block">{{ Auth::user()->name }}</a>
