@@ -29,6 +29,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
     //rutas para las demas secciones del sistema
     Route::resource('studentss', 'StudentsController');
+    Route::resource('profesorss', 'ProfesorssController');
     /*Route::resource('tag', 'TagController');
     Route::resource('post', 'PostController');
     Route::resource('user', 'UserController');

@@ -18,4 +18,21 @@ class Students extends Model
         'phone',
         'email',
         'date_of_address'];
+
+
+
+public function my_store($request)
+{
+
+    self::create([
+        'name' => $request->name,
+        'surname' => $request->surname,
+        'dni' => $request->dni,
+        'date_of_birth' => $request->date_of_birth,
+        'phone' => $request->phone,
+        'email' => $request->email,
+        'date_of_address' => $request->date_of_address,
+    ]);
+}
+
 }

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Student;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreRequest extends FormRequest
+class StudentsRequest extends FormRequest
 {
     public function authorize()
     {
@@ -14,18 +14,26 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'string|required|max:255',
-            'dni'=>'string|required|unique:students|min:8|max:8',
-            'phone'=>'string|nullable|unique:students|min:9|max:9',
-            'email'=>'string|nullable|unique:students|max:255|email:rfc,dns',
+            'name'=>'required|max:255',
+            'surname'=>'required|max:255',
+            'dni'=>'required|unique:students|min:8|max:8',
+            'date_of_birth'=>'required|date|before_or_equal:today',
+            'phone'=>'bail|required|unique:students|min:13|max:13',
+            'email'=>'required||unique:students,email',
+            'date_of_address'=>'required|date',
         ];
     }
+
     public function messages()
     {
         return[
             'name.required'=>'Este campo es requerido.',
             'name.string'=>'El valor no es correcto.',
             'name.max'=>'Solo se permite 255 caracteres.',
+
+            'surname.required'=>'Este campo es requerido.',
+            'surname.string'=>'El valor no es correcto.',
+            'surname.max'=>'Solo se permite 255 caracteres.',
 
             'dni.string'=>'El valor no es correcto.',
             'dni.required'=>'Este campo es requerido.',

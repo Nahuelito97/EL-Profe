@@ -6,13 +6,14 @@ use App\Students;
 use Illuminate\Http\Request;
 use App\Http\Requests\Student\StoreRequest;
 use App\Http\Requests\Student\UpdateeRequest;
+use App\Http\Requests\StudentsRequest;
 use Session;
 
 class StudentsController extends Controller
 {
     public function index()
     {
-        $studentss = Students::orderBy('id', 'ASC')->paginate(10);
+        $studentss = Students::orderBy('id', 'ASC')->paginate(5);
         return view('admin.students.index', compact('studentss'));
 
     }
@@ -23,10 +24,13 @@ class StudentsController extends Controller
         return view('admin.students.create');
     }
 
-    public function store(StoreRequest $request)
+    public function store(StudentsRequest $request)
     {
-        Students::crate($request->all());
+        Students::create($request->all());
+
         return redirect()->route('studentss.index');
+        // return redirect()->route('libros')
+
     }
 
 
