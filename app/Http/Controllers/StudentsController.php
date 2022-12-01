@@ -29,8 +29,6 @@ class StudentsController extends Controller
         Students::create($request->all());
 
         return redirect()->route('studentss.index');
-        // return redirect()->route('libros')
-
     }
 
 

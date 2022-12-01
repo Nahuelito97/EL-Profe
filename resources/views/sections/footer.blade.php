@@ -1,6 +1,6 @@
 <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
-        <b>Copyright © | <span class="text-uppercase">
+        <b>Copyright © | <span class="text-uppercase" style="margin-top: 1px; margin-left:7px; color:black; font-size:20px">
             Nahuel Wagner
         </span></b>
     </div>

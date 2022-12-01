@@ -7,79 +7,43 @@ use Illuminate\Http\Request;
 
 class ProfesorssController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $profesorss = Profesorss::orderBy('id', 'ASC')->paginate(5);
+        return view('admin.profesorss.index', compact('profesorss'));
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
-        //
+        return view('admin.profesorss.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        Profesorss::create($request->all());
+
+        return redirect()->route('profesorss.index');
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Profesorss  $profesorss
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(Profesorss $profesorss)
     {
-        //
+        return view('admin.profesorss.show', compact('profesorss'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Profesorss  $profesorss
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Profesorss $profesorss)
     {
-        //
+        return view('admin.profesorss.edit', compact('profesorss'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Profesorss  $profesorss
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, Profesorss $profesorss)
     {
-        //
+      $profesorss->update($request->all());
+      return redirect()->route('profesorss.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Profesorss  $profesorss
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Profesorss $profesorss)
-    {
-        //
-    }
 }
