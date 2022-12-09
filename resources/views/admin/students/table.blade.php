@@ -9,7 +9,7 @@
             <th>Teléfono</th>
             <th>Correo Electronico</th>
             <th>Fecha de Inicio</th>
-            @if (@Auth::user()->hasAnyRole('Admin'))
+            @if (@Auth::user()->hasAnyRole('SuperAdmin'))
                 <th style="width: 40px">Acciones</th>
             @endif
         </tr>
@@ -39,18 +39,21 @@
                 </td>
 
                 <td class="d-flex">
-                    @if (@Auth::user()->hasAnyRole('Admin'))
-                        <a href="{{ route('studentss.show', [$students->id]) }}" class="mr-1 btn btn-sm btn-success" title="Ver"> <i class="fas fa-eye"></i> </a>
-                        <a href="{{ route('studentss.edit', [$students->id]) }}" class="mr-1 btn btn-sm btn-primary" title="Editar"> <i class="fas fa-edit"></i> </a>
 
+                    @can('admin.studentss.show')
+                        <a href="{{ route('studentss.show', [$students->id]) }}" class="mr-1 btn btn-sm btn-success" title="Ver"> <i class="fas fa-eye"></i> </a>
+                    @endcan
+                    @can('admin.studentss.edit')
+                        <a href="{{ route('studentss.edit', [$students->id]) }}" class="mr-1 btn btn-sm btn-primary" title="Editar"> <i class="fas fa-edit"></i> </a>
+                    @endcan
+                    @can('admin.studentss.destroy')
                         <form action="{{ route('studentss.destroy', [$students->id]) }}" class="mr-1" method="POST" title="Eliminar">
                             @method('DELETE')
                             @csrf
                             <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Delete Student {{ $students->name }}?')" title="Delete Student"> <i class="fas fa-trash"></i> </button>
                         </form>
-                    @endif
+                    @endcan
                 </td>
-
             </tr>
         @endforeach
     </tbody>

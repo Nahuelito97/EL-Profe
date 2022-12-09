@@ -3,13 +3,13 @@
     <!-- Brand Logo -->
     <a href="{{ route('dashboard') }}" class="brand-link">
         <img src="{{ asset('melody/images/institution.jpg') }}" alt="AdminLTE Logo"
-        class="brand-image img-circle elevation-3" style="opacity: .8" width="50" height="40"
+            class="brand-image img-circle elevation-3" style="opacity: .8" width="50" height="40"
             class="brand-image img-circle elevation-3" style="opacity: .8">
         <span style="margin-top: 8px; margin-left:7px; color:white; font-size:20px">
             <span class="text-danger">{</span><span class="text-uppercase"> {{ config('app.name', 'El-Profe') }}
             </span><span class="text-danger">}</span>
         </span>
-        <sup class="slogan text-danger font-weight-lighter">Coodes</sup>
+
     </a>
 
     <!-- Sidebar -->
@@ -18,7 +18,7 @@
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
                 <img src="{{ asset('melody/images/institution.jpg') }}" alt="AdminLTE Logo"
-                            class="brand-image img-circle elevation-3" style="opacity: .8" width="50" height="40">
+                    class="brand-image img-circle elevation-3" style="opacity: .8" width="50" height="40">
 
             </div>
             <div class="info">
@@ -30,19 +30,6 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
-
-                    <a href="#" class="nav-link">
-
-                        <h5>
-                            <i class="left fas fa-cogs"></i>
-                            <p class="badge badge-danger text-uppercase">
-                                Administrador
-                            </p>
-                        </h5>
-                    </a>
-
-
-
 
                 <li class="nav-item">
                     @can('admin.dashboard')
@@ -57,7 +44,6 @@
                 </li>
 
                 <li class="nav-item">
-
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
@@ -76,7 +62,6 @@
                             </a>
                         </li>
                     </ul>
-
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
@@ -102,7 +87,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
-                           Especilidades
+                            Especilidades
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
@@ -181,6 +166,30 @@
                             </a>
                         </li>
                     </ul>
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-user"></i>
+                        <p>
+                            User
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('users.index') }}"
+                                class="nav-link {{ request()->is('admin/users*') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-tags"></i>
+                                <p>
+                                    Users
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+
                 </li>
 
             </ul>

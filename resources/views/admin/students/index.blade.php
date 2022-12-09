@@ -4,51 +4,51 @@
 @section('content')
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        @include('admin.students.section')
+        <div class="content-header pt-3 pb-3 px-0 bg-white">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    @include('admin.students.section')
+                    <div class="col-md-11 mx-auto px-0 dashboard_route">
+                        <p> > Dashboard <span class="ml-2"> > Students</span></p>
+                    </div>
+                </div><!-- /.row -->
+                <div class="col-md-11 mx-auto pt-2 pb-2 px-0 d-flex align-items-center justify-content-between"
+                    style="height: 60px">
+                    <h1 class="section_title mb-0">Students</h1>
+                    @can('admin.studentss.create')
+                        <a class="btn btn-primary button_theme float-right" href="{{ route('studentss.create') }}">+
+                            Create New</a>
+                    @endcan
 
+
+                </div>
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
 
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
-                <div class="row">
+                <div class="card_layout pb-5 pt-3">
 
-                    <div class="col-md-12">
-                        <!-- general form elements disabled -->
-                        <div class="card card-warning">
-                            <div class="card-header">
-                                <h3 class="card-title">Listado de Alumnos.</h3>
-
+                    <div class="col-md-11 card bg-white mx-auto card_list border-0">
+                        <div class="table-responsive">
+                            <div class="col-md-12 card-body pt-3">
+                                @if (count($studentss))
+                                    @include('admin.students.table')
+                                @else
+                                    <div><span>No data</span></div>
+                                @endif
                             </div>
-
-                            <!-- /.card-header -->
-                            <div class="card-body">
-                                @include('admin.students.table')
-                            </div>
-                            <!-- /.card-body -->
-                            <div class="card-footer">
-                                <nav aria-label="Page navigation example">
-                                    <ul class="pagination justify-content-center">
-                                        {{ $studentss->links() }}
-
-                                    </ul <div class="col-xs-12">
-                                    <p class="text-center">
-                                        @if (@Auth::user()->hasAnyRole('Admin'))
-                                            <a href="{{ route('studentss.create') }}" class="mr-1 btn btn-sm btn-success"
-                                                title="Crear Nuevo"> <i class="fas fa-user-plus"></i> </a>
-                                        @endif
-
-                                    </p>
-                            </div>
-                            </nav>
+                            {{ $studentss->links() }}
 
                         </div>
                     </div>
                 </div>
             </div>
             <!-- /.row -->
-    </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
+
+        </section>
+        <!-- /.content -->
     </div>
 @endsection

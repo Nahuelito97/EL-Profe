@@ -6,23 +6,13 @@ use App\Role;
 
 class UserTableSeeder extends Seeder
 {
-    public function run()
-    {
-      $role_user = Role::where('name','user')->first();
-      $role_admin = Role::where('name','admin')->first();
+    public function run(){
+      User::create([
+        'name' => 'Nahuel Wagner',
+        'email' => 'elprofe@gmail.com',
+        'password' => bcrypt('12345'),
+      ])->assignRole('SuperAdmin');
 
-      $user = new User();
-      $user-> name = "User";
-      $user->email = "user@mail.com";
-      $user->password = bcrypt('query');
-      $user->save();
-      $user->roles()->attach($role_user);
-
-      $user = new User();
-      $user-> name = "Nahuel Wagner";
-      $user->email = "elprofe@gmail.com";
-      $user->password = bcrypt('12345');
-      $user->save();
-      $user->roles()->attach($role_admin);
+    factory(User::class,5)->create(); //creo 5 usuarios en la bd
     }
 }

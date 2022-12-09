@@ -23,14 +23,18 @@ Auth::routes();
 /*Route::get('/home', 'HomeController@index')->name('home');*/
 
 
+
+
 // Rutas del panel administrativo
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
-    Route::get('/dashboard','DashboardController@index')->name('dashboard');
+    Route::get('/dashboard','DashboardController@index')->name('dashboard')->middleware('can:admin.dashboard');
 
     //rutas para las demas secciones del sistema
     Route::resource('studentss', 'StudentsController');
     Route::resource('profesorss', 'ProfesorssController');
     Route::resource('especialityy', 'EspecialityController');
+    Route::resource('users', 'UserController');
+    Route::resource('profile', 'ProfileController');
     /*Route::resource('tag', 'TagController');
     Route::resource('post', 'PostController');
     Route::resource('user', 'UserController');

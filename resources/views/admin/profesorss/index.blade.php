@@ -15,7 +15,7 @@
                 <div class="col-md-11 mx-auto pt-2 pb-2 px-0 d-flex align-items-center justify-content-between"
                     style="height: 60px">
                     <h1 class="section_title mb-0">Profesors</h1>
-                    @if (@Auth::user()->hasAnyRole('Admin'))
+                    @if (@Auth::user()->hasAnyRole('SuperAdmin'))
                     <a class="btn btn-primary button_theme float-right" href="{{ route('profesorss.create') }}">+
                         Create New</a>
                     @endif

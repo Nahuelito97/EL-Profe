@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Profesorss;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProfesorssRequest;
 
 class ProfesorssController extends Controller
 {
@@ -20,8 +21,9 @@ class ProfesorssController extends Controller
         return view('admin.profesorss.create');
     }
 
-    public function store(Request $request)
+    public function store(ProfesorssRequest $request)
     {
+        //dd($request);
         Profesorss::create($request->all());
 
         return redirect()->route('profesorss.index');

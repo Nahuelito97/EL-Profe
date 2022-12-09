@@ -41,7 +41,7 @@
                 <td>{{ $profesors->especiality->name }}</td>
 
                 <td class="d-flex">
-                    @if (@Auth::user()->hasAnyRole('Admin'))
+                    @if (@Auth::user()->hasAnyRole('SuperAdmin'))
                         <a href="{{ route('profesorss.edit', [$profesors->id]) }}" class="mr-1 btn btn-sm btn-primary"
                             title="Editar"> <i class="fas fa-edit"></i> </a>
 
