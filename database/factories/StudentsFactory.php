@@ -15,6 +15,10 @@ $factory->define(Students::class, function (Faker $faker) {
         'phone' => $faker->e164PhoneNumber,
         'email' => $faker->unique()->safeEmail,
         'date_of_address' => $this->faker->date($format = 'Y-m-d', $max = 'now'),
+        'pais_id' => $faker->numberBetween(1, 5),
+        'provincies_id' => $faker->numberBetween(1, 23),
+        'localidad_id' => $faker->numberBetween(1, 100),
+        'directions_id' => $faker->numberBetween(1, 100),
 
     ];
 });

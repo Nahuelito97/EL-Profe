@@ -17,7 +17,12 @@ class Students extends Model
         'date_of_birth',
         'phone',
         'email',
-        'date_of_address'];
+        'date_of_address',
+        'pais_id',
+        'provincies_id',
+        'localidad_id',
+        'direction_id',
+    ];
 
 
 

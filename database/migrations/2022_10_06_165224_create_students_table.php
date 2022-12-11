@@ -22,6 +22,23 @@ class CreateStudentsTable extends Migration
             $table->string('phone')->nullable()->unique();
             $table->string('email')->nullable()->unique();
             $table->string('date_of_address');
+
+            $table->unsignedBigInteger('pais_id');
+            $table->foreign('pais_id')->references('id')->on('pais');
+
+            $table->unsignedBigInteger('provincies_id');
+            $table->foreign('provincies_id')->references('id')->on('provincies');
+
+            $table->unsignedBigInteger('localidad_id');
+            $table->foreign('localidad_id')->references('id')->on('localidads');
+
+            $table->unsignedBigInteger('directions_id');
+            $table->foreign('directions_id')->references('id')->on('directions');
+
+
+
+
+
             $table->softDeletes();
             $table->timestamps();
         });

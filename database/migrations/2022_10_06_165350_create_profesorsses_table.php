@@ -23,6 +23,20 @@ class CreateProfesorssesTable extends Migration
             $table->string('email')->nullable()->unique();
             $table->string('date_of_address');
 
+
+            $table->unsignedBigInteger('pais_id');
+            $table->foreign('pais_id')->references('id')->on('pais');
+
+            $table->unsignedBigInteger('provincy_id');
+            $table->foreign('provincy_id')->references('id')->on('provincies');
+
+            $table->unsignedBigInteger('locality_id');
+            $table->foreign('locality_id')->references('id')->on('localidads');
+
+            $table->unsignedBigInteger('direction_id');
+            $table->foreign('direction_id')->references('id')->on('directions');
+
+
             $table->unsignedBigInteger('especiality_id');
             $table->foreign('especiality_id')->references('id')->on('especialities');
 

@@ -11,7 +11,7 @@
             <th scope="col" class="table_head_label px-1 col-2 col-md-2 text-center">Email</th>
             <th scope="col" class="table_head_label px-1 col-1 col-md-1 text-center">DateofAddress</th>
             <th scope="col" class="table_head_label px-1 col-1 col-md-1 ">Especiality</th>
-            @if (@Auth::user()->hasAnyRole('Admin'))
+            @if (@Auth::user()->hasAnyRole('SuperAdmin'))
                 <th scope="col" class="table_head_label px-1 col-1 col-md-1 text-center">Actions</th>
             @endif
         </tr>
@@ -39,7 +39,6 @@
                     {{ $profesors->date_of_address }}
                 </td>
                 <td>{{ $profesors->especiality->name }}</td>
-
                 <td class="d-flex">
                     @if (@Auth::user()->hasAnyRole('SuperAdmin'))
                         <a href="{{ route('profesorss.edit', [$profesors->id]) }}" class="mr-1 btn btn-sm btn-primary"

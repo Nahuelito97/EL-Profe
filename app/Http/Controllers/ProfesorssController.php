@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Profesorss;
 use Illuminate\Http\Request;
-use App\Http\Requests\ProfesorssRequest;
+use Session;
 
 class ProfesorssController extends Controller
 {
@@ -45,7 +45,22 @@ class ProfesorssController extends Controller
     public function update(Request $request, Profesorss $profesorss)
     {
       $profesorss->update($request->all());
-      return redirect()->route('profesorss.index');
+      return redirect()->route('profesorss.edit', $profesorss)->with('info', 'El profesor se actualizó con éxito.');
     }
 
+    public function destroy($id)
+    {
+        $profesorss = Profesorss::find($id);
+        if (!$profesorss) {
+            Session::flash("error","The Profesor doesn't exist");
+            return redirect()->back();
+        }
+        $profesorss->delete();
+        Session::flash('success', 'Profesor deleted successfully');
+        return redirect(route('Profesorss.index'));
+        /*$studentss->update([
+            'borrado' => 1,
+        ]);
+        return redirect(route('studentss.index'));*/
+    }
 }
