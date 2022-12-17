@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
-
+use RealRashid\SweetAlert\Facades\Alert;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
@@ -16,6 +16,7 @@ class UserController extends Controller
         $consulta=User::select('users.*');
 
         $users = $consulta->where('name', 'LIKE', '%'. $name . '%')->paginate(5);
+
 
         return view('admin.users.index', compact('users'));
     }
@@ -30,7 +31,7 @@ class UserController extends Controller
 
         $user->roles()->sync($request->roles);
 
-        return redirect()->route('users.edit', $user)->with('info', 'El rol o los roles fueron asignados correctamente');
+        return redirect()->route('users.index', $user);
 
     }
 }

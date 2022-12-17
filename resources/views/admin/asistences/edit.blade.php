@@ -2,24 +2,26 @@
 
 
 @section('content')
+    <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <div class="content-header pt-3 pb-3 px-0 bg-white">
             <div class="container-fluid">
                 <div class="row mb-2">
 
                     <div class="col-md-11 mx-auto px-0 dashboard_route">
-                        <p> > Dashboard <span class="ml-2"> >Users</span><span class="ml-2"></span></p>
+                        <p> > Dashboard <span class="ml-2"> > Profesors</span><span class="ml-2"> >Edit</span></p>
 
                     </div>
                 </div><!-- /.row -->
-                @if (session('success_message'))
-                    <div class="alert alert-success">
-                        {{ session('Title') }}
+                @if (session('info'))
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <h5><i class="icon fas fa-check"></i>{{ session('info') }}</h5>
                     </div>
                 @endif
                 <div class="col-md-11 mx-auto pt-2 pb-2 px-0 d-flex align-items-center justify-content-between"
                     style="height: 60px">
-                    <h1 class="section_title mb-0">Userss</h1>
+                    <h1 class="section_title mb-0">Profesors</h1>
 
                 </div>
             </div><!-- /.container-fluid -->
@@ -36,8 +38,7 @@
                             <div class="col-md-12 card-body pt-3">
                                 <div class="card_layout pt-3">
                                     <div class="card_layout_header border-0 layout_title col-md-11 mx-auto px-0 pt-3">
-                                        Edit Users | Assign Role
-
+                                        Edit a Asistence
                                     </div>
                                     <div class="card-body col-md-11 mx-auto px-0 ">
                                         <div class="card card-default">
@@ -49,24 +50,17 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-md-2">
-                                                        <p class="h5">Name:</p>
-                                                        <p class="form-control">{{ $user->name }}</p>
-                                                    </div>
-                                                </div>
-                                                {!! Form::model($user, ['route' => ['users.update', $user], 'method' => 'put']) !!}
-                                                @foreach ($roles as $role)
-                                                    <div>
-                                                        <label>
-                                                            {!! Form::checkbox('roles[]', $role->id, null, ['class' => 'mr-1']) !!}
-                                                            {{ $role->name }}
-                                                        </label>
-                                                    </div>
-                                                @endforeach
+                                                <div class="card-body">
+                                                    <form class="" method="post"
+                                                        action="{{ route('asistencias.update', $studentss) }}">
 
-                                                {!! Form::submit('Asignar rol', ['class' => 'btn btn-primary mt-2']) !!}
-                                                {!! Form::close() !!}
+                                                        {{ csrf_field() }}
+                                                        {{ method_field('put') }}
+
+                                                        @include('admin.asistences.fields')
+                                                    </form>
+
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -74,7 +68,8 @@
                             </div>
                         </div>
                     </div>
-                    <!-- /.row -->
+                </div>
+                <!-- /.row -->
 
         </section>
         <!-- /.content -->

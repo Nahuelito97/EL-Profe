@@ -34,15 +34,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('profesorss', 'ProfesorssController');
     Route::resource('especialityy', 'EspecialityController');
     Route::resource('users', 'UserController');
-    Route::resource('profile', 'ProfileController');
-    /*Route::resource('tag', 'TagController');
-    Route::resource('post', 'PostController');
-    Route::resource('user', 'UserController');
-    Route::get('/profile', 'UserController@profile')->name('user.profile');
-    Route::post('/profile', 'UserController@profile_update')->name('user.profile.update');
-
-
-    Route::get('setting', 'SettingController@edit')->name('setting.index');
-    Route::post('setting', 'SettingController@update')->name('setting.update');*/
+    Route::resource('roles', 'RoleController');
+    Route::resource('asistencias', 'AsistenceController');
+    Route::resource('clases', 'ClasseController');
+    //Route::resource('profile', 'ProfileController');
 
 });

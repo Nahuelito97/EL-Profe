@@ -88,7 +88,10 @@
                                                         {!! Form::model($profesorss, ['route' => ['profesorss.update', $profesorss], 'method' => 'put']) !!}
                                                         <div class="form-group"> {{-- Laravel Collective recomienda colocar los elementos como label e input dentro de un div de tipo form-group para la separación. --}}
                                                             {!! Form::label('email', 'Email') !!} {{-- form control es de bootstrap y le da estilo al input. --}}
-                                                            {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el correo nuevo correo electronico']) !!}
+                                                            {!! Form::text('email', null, [
+                                                                'class' => 'form-control',
+                                                                'placeholder' => 'Ingrese el correo nuevo correo electronico',
+                                                            ]) !!}
 
                                                             @error('email')
                                                                 {{-- En caso de error de validación, enviamos un mensaje de error. --}}
@@ -111,7 +114,8 @@
                                                         </div>
 
                                                         {!! Form::submit('Actualizar profesor', ['class' => 'btn btn-primary']) !!}
-                                                        <a class="btn btn-primary btn-rounded" href="{{ route('profesorss.index') }}">Volver</a>
+                                                        <a class="btn btn-primary btn-rounded"
+                                                            href="{{ route('profesorss.index') }}">Volver</a>
 
 
                                                         {!! Form::close() !!}

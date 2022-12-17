@@ -7,13 +7,13 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Student\StoreRequest;
 use App\Http\Requests\Student\UpdateeRequest;
 use App\Http\Requests\StudentsRequest;
-use Session;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class StudentsController extends Controller
 {
     public function index()
     {
-        $studentss = Students::orderBy('id', 'ASC')->paginate(5);
+        $studentss = Students::orderBy('id', 'ASC')->Paginate(5);
         return view('admin.students.index', compact('studentss'));
 
     }
@@ -32,8 +32,10 @@ class StudentsController extends Controller
     }
 
 
-    public function show(Students $studentss)
+    public function show($id)
     {
+        $studentss = Students::find($id);
+         //return response()->json($studentss);
         return view('admin.students.show', compact('studentss'));
     }
 
@@ -53,16 +55,7 @@ class StudentsController extends Controller
     public function destroy($id)
     {
         $studentss = Students::find($id);
-        if (!$studentss) {
-            Session::flash("error","The student doesn't exist");
-            return redirect()->back();
-        }
         $studentss->delete();
-        Session::flash('success', 'Student deleted successfully');
-        return redirect(route('studentss.index'));
-        /*$studentss->update([
-            'borrado' => 1,
-        ]);
-        return redirect(route('studentss.index'));*/
+        return redirect(route('studentss.index'))->with('delete', 'OK');
     }
 }

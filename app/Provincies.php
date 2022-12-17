@@ -9,4 +9,9 @@ class Provincies extends Model
     protected $fillable = [
         'name',
     ];
+
+    public function provincies()
+    {
+        return $this->belongsTo('App\Students');
+    }
 }

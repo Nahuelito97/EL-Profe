@@ -35,8 +35,8 @@ class CreateStudentsTable extends Migration
             $table->unsignedBigInteger('directions_id');
             $table->foreign('directions_id')->references('id')->on('directions');
 
-
-
+            $table->unsignedBigInteger('asistenc_id')->nullable();
+            $table->foreign('asistenc_id')->references('id')->on('asistences');
 
 
             $table->softDeletes();

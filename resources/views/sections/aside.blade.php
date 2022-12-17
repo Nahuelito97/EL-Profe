@@ -107,7 +107,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-edit"></i>
                         <p>
-                            Forms
+                            Clases
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
@@ -115,13 +115,16 @@
                         <li class="nav-item">
                             <a href="pages/forms/general.html" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>General Elements</p>
+                                <p>Courses</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/forms/advanced.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Advanced Elements</p>
+                            <a href="{{ route('asistencias.index') }}"
+                                class="nav-link {{ request()->is('admin/users*') ? 'active' : '' }}">
+                                <i class="fas fa-user-cog"></i>
+                                <p>
+                                    Asistencias
+                                </p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -140,41 +143,9 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-table"></i>
+                        <i class="nav-icon fas fa-cogs"></i>
                         <p>
-                            Tables
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="pages/tables/simple.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Simple Tables</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/tables/data.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>DataTables</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/tables/jsgrid.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>jsGrid</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-
-                <li class="nav-item">
-
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-user"></i>
-                        <p>
-                            User
+                            Config
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
@@ -182,16 +153,23 @@
                         <li class="nav-item">
                             <a href="{{ route('users.index') }}"
                                 class="nav-link {{ request()->is('admin/users*') ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-tags"></i>
+                                <i class="fas fa-user-cog"></i>
                                 <p>
-                                    Users
+                                    UserConf
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('roles.index') }}"
+                                class="nav-link {{ request()->is('admin/roles*') ? 'active' : '' }}">
+                                <i class="fas fa-wrench"></i>
+                                <p>
+                                    Roles
                                 </p>
                             </a>
                         </li>
                     </ul>
-
                 </li>
-
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
