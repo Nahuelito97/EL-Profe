@@ -93,8 +93,8 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('especialityy.index') }}"
-                                class="nav-link {{ request()->is('admin/especialityy*') ? 'active' : '' }}">
+                            <a href="{{ route('especialities.index') }}"
+                                class="nav-link {{ request()->is('admin/especialities*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-tags"></i>
                                 <p>
                                     Especialidad
@@ -170,6 +170,28 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="fas fa-power-off text-primary"></i></i>
+                        Logout
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="background-color:black">
+                        @guest
+                        @else
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                                <i class="fas fa-power-off text-primary"></i>
+                                Logout
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        @endguest
+
+                    </div>
+                </li>
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

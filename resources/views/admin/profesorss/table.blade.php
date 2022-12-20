@@ -11,9 +11,9 @@
             <th scope="col" class="table_head_label px-1 col-2 col-md-2 text-center">Email</th>
             <th scope="col" class="table_head_label px-1 col-1 col-md-1 text-center">DateofAddress</th>
             <th scope="col" class="table_head_label px-1 col-1 col-md-1 ">Especiality</th>
-            @if (@Auth::user()->hasAnyRole('SuperAdmin'))
-                <th scope="col" class="table_head_label px-1 col-1 col-md-1 text-center">Actions</th>
-            @endif
+            <th></th>
+            <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -38,22 +38,29 @@
                 <td>
                     {{ $profesors->date_of_address }}
                 </td>
-                <td>{{ $profesors->especiality->name }}</td>
-                <td class="d-flex">
-                    @if (@Auth::user()->hasAnyRole('SuperAdmin'))
-                        <a href="{{ route('profesorss.edit', [$profesors->id]) }}" class="mr-1 btn btn-sm btn-primary"
-                            title="Editar"> <i class="fas fa-edit"></i> </a>
+                <td>{{ $profesors->especialitis->name }}</td>
+                <td width="10px">
 
-                        <form action="{{ route('profesorss.destroy', [$profesors->id]) }}" class="mr-1"
-                            method="POST" title="Eliminar">
+                        <a href="{{ route('profesorss.show', [$profesors->id]) }}" class="mr-1 btn btn-sm btn-success"
+                            title="Show">Show</a>
+
+                </td>
+                <td width="10px">
+                    @can('admin.profesorss.edit')
+                        <a href="{{ route('profesorss.edit', [$profesors->id]) }}" class="mr-1 btn btn-sm btn-primary"
+                            title="Edit">Edit</a>
+                    @endcan
+                </td>
+                <td width="10px">
+                    @can('admin.profesorss.destroy')
+                        <form action="{{ route('profesorss.destroy', [$profesors->id]) }}" class="mr-1 formulario-eliminar"
+                            method="POST" title="Delete">
                             @method('DELETE')
                             @csrf
-                            <button type="submit" class="btn btn-sm btn-danger"
-                                onclick="return confirm('Delete Student {{ $profesors->name }}?')"
-                                title="Delete Student"> <i class="fas fa-trash"></i> </button>
+                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                         </form>
+                    @endcan
 
-                    @endif
                 </td>
 
             </tr>

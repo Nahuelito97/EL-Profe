@@ -4,86 +4,61 @@ namespace App\Http\Controllers;
 
 use App\Especiality;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 use App\Http\Requests\EspecialityResquest;
 
 class EspecialityController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $especiality = Especiality::orderBy('id', 'asc')->get();
-        return view('admin.especiality.index', compact('especiality'));
+        return view('admin.especialities.index', compact('especiality'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        return view('admin.especiality.create');
+        return view('admin.especialities.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(EspecialityResquest $request)
+    public function store(Request $request)
     {
-        Especiality::crete($request->all());
-        return redirect()->route('especialityy.index');
+        $request->validate([                        /* Agregamos reglas de validación para el formulario. */
+            'name' => 'required|max:255',
+        ]);
+
+        $especiality =  Especiality::create($request->all());
+
+        Alert::success('Success','The especiality was created correctly.');
+
+        return redirect()->route('especialities.index', $especiality);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Especiality  $especiality
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(Especiality $especiality)
     {
-        return view('admin.especiality.show', compact('especiality'));
+        return view('admin.especialities.show', compact('especiality'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Especiality  $especiality
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(Especiality $especiality)
     {
-        //
+        return view('admin.especialities.edit', compact('especiality'));
+        return redirect(route('admin.especialities.index'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Especiality  $especiality
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, Especiality $especiality)
     {
-        //
+        $request->validate([
+            'name' => 'required'
+        ]);
+        $especiality->update($request->all());
+
+        Alert::success('Info', 'The especialities was successfully updated.');
+
+        return redirect()->route('especialities.index', $especiality);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Especiality  $especiality
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Especiality $especiality)
-    {
-        //
-    }
 }

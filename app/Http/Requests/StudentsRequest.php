@@ -21,36 +21,48 @@ class StudentsRequest extends FormRequest
             'phone'=>'bail|required|unique:students|min:13|max:13',
             'email'=>'required||unique:students,email',
             'date_of_address'=>'required|date',
+            'pais_id' => 'required',
+            'provincies_id' => 'required',
+            'loclities_id' => 'required',
+            'directions_id' => 'required'
+
         ];
     }
 
     public function messages()
     {
         return[
-            'name.required'=>'Este campo es requerido.',
-            'name.string'=>'El valor no es correcto.',
-            'name.max'=>'Solo se permite 255 caracteres.',
+            'name.required'=>'This field is required',
+            'name.string'=>'the value is not correct',
+            'name.max'=>'only 255 characters allowed',
 
-            'surname.required'=>'Este campo es requerido.',
-            'surname.string'=>'El valor no es correcto.',
-            'surname.max'=>'Solo se permite 255 caracteres.',
+            'surname.required'=>'This field is required',
+            'surname.string'=>'the value is not correct',
+            'surname.max'=>'only 255 characters allowed',
 
-            'dni.string'=>'El valor no es correcto.',
-            'dni.required'=>'Este campo es requerido.',
-            'dni.unique'=>'Este DNI ya se encuentra registrado.',
-            'dni.min'=>'Se requiere de 8 caracteres.',
-            'dni.max'=>'Solo se permite 8 caracteres.',
+            'dni.string'=>'the value is not correct',
+            'dni.required'=>'This field is required',
+            'dni.unique'=>'this ID is already registered.',
+            'dni.min'=>'8 characters are required',
+            'dni.max'=>'only 8 characters are required',
 
 
-            'phone.string'=>'El valor no es correcto.',
-            'phone.unique'=>'El número de celular ya se encuentra registrado.',
-            'phone.min'=>'Se requiere de 9 caracteres.',
-            'phone.max'=>'Solo se permite 9 caracteres.',
+            'phone.string'=>'the value is not correct',
+            'phone.unique'=>'the phone number is already registered',
+            'phone.min'=>'13 characters are required',
+            'phone.max'=>'only 13 characters are required',
 
-            'email.string'=>'El valor no es correcto.',
-            'email.unique'=>'La dirección de correo electrónico ya se encuentra registrada.',
-            'email.max'=>'Solo se permite 255 caracteres.',
-            'email.email'=>'No es un correo electrónico.',
+
+            'email.string'=>'the value is not correct',
+            'email.unique'=>'the email address is already registered',
+            'email.max'=>'only 255 characters allowed',
+            'email.email'=>'not an email',
+
+
+            'pais_id.required'=>'This field is required.',
+            'provincies_id.required'=>'This field is required.',
+            'loclities_id.required'=>'This field is required.',
+            'directions_id.required'=>'This field is required.',
         ];
     }
 }

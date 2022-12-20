@@ -21,24 +21,22 @@ class CreateProfesorssesTable extends Migration
             $table->date('date_of_birth');
             $table->string('phone')->nullable()->unique();
             $table->string('email')->nullable()->unique();
-            $table->string('date_of_address');
+            $table->date('date_of_address');
 
 
             $table->unsignedBigInteger('pais_id');
             $table->foreign('pais_id')->references('id')->on('pais');
 
-            $table->unsignedBigInteger('provincy_id');
-            $table->foreign('provincy_id')->references('id')->on('provincies');
+            $table->unsignedBigInteger('provincies_id');
+            $table->foreign('provincies_id')->references('id')->on('provincies');
 
-            $table->unsignedBigInteger('locality_id');
-            $table->foreign('locality_id')->references('id')->on('localidads');
+            $table->unsignedBigInteger('localities_id');
+            $table->foreign('localities_id')->references('id')->on('localidads');
 
-            $table->unsignedBigInteger('direction_id');
-            $table->foreign('direction_id')->references('id')->on('directions');
-
-
-            $table->unsignedBigInteger('especiality_id');
-            $table->foreign('especiality_id')->references('id')->on('especialities');
+            $table->unsignedBigInteger('directions_id');
+            $table->foreign('directions_id')->references('id')->on('directions');
+            $table->unsignedBigInteger('especialitis_id');
+            $table->foreign('especialitis_id')->references('id')->on('especialities');
 
             $table->softDeletes();
             $table->timestamps();

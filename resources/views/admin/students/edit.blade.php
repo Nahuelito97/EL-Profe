@@ -31,6 +31,11 @@
                                     <div class="card_layout_header border-0 layout_title col-md-11 mx-auto px-0 pt-3">
                                         Alumns Edit
                                     </div>
+                                    @if (session('Info'))
+                                        <div class="alert alert-success">
+                                            {{ session('Info') }}
+                                        </div>
+                                    @endif
                                     <br>
                                     <div class="card-body col-md-11 mx-auto px-0 ">
                                         <div class="card card-default">
@@ -43,7 +48,69 @@
                                             </div>
                                             <!-- /.card-header -->
                                             <div class="card-body">
-                                                @include('admin.students.partials')
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="row invoice-info">
+                                                            <div class="col-sm-5 invoice-col">
+                                                                <address>
+                                                                    <b>Name:</b> {{ $studentss->name }}<br>
+                                                                    <b>Surname:</b> {{ $studentss->surname }}<br>
+                                                                    <b>DNI:</b> {{ $studentss->dni }}<br>
+                                                                    <b>DateOfBirth: </b>
+                                                                    {{ date('d-m-Y', strtotime($studentss->date_of_birth)) }}<br>
+                                                                    <b>DateOfAdress:</b>
+                                                                    {{ date('d-m-Y', strtotime($studentss->date_of_address)) }}<br>
+                                                                    <b>Country:</b> {{ $studentss->pais->name }} <br>
+                                                                    <b>Provincie:</b> {{ $studentss->provincies->name }}<br>
+                                                                    <b>Locality | CP:</b> {{ $studentss->localities->name }}
+                                                                    | {{ $studentss->localities->cod_post }}<br>
+                                                                    <b>Direction:</b> {{ $studentss->directions->name }} |
+                                                                    {{ $studentss->directions->number }}<br>
+
+                                                                </address>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-md-6">
+                                                        {!! Form::model($studentss, ['route' => ['studentss.update', $studentss], 'method' => 'put']) !!}
+                                                        <div class="form-group"> {{-- Laravel Collective recomienda colocar los elementos como label e input dentro de un div de tipo form-group para la separación. --}}
+                                                            {!! Form::label('email', 'Email') !!} {{-- form control es de bootstrap y le da estilo al input. --}}
+                                                            {!! Form::text('email', null, [
+                                                                'class' => 'form-control',
+                                                                'placeholder' => 'Ingrese el correo nuevo correo electronico',
+                                                            ]) !!}
+
+                                                            @error('email')
+                                                                {{-- En caso de error de validación, enviamos un mensaje de error. --}}
+                                                                <span class="text-danger">{{ $message }}</span>
+                                                            @enderror
+
+                                                        </div>
+
+                                                        <div class="form-group"> {{-- Laravel Collective recomienda colocar los elementos como label e input dentro de un div de tipo form-group para la separación. --}}
+                                                            <div class="col-md-6">
+                                                                {!! Form::label('phone', 'Phone') !!} {{-- form control es de bootstrap y le da estilo al input. --}}
+                                                                {!! Form::text('phone', null, [
+                                                                    'class' => 'form-control',
+                                                                    'placeholder' => 'Ingrese el nuevo numero de telefono',
+                                                                ]) !!}
+
+                                                                @error('phone')
+                                                                    <span class="text-danger">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+
+                                                        {!! Form::submit('Update Student', ['class' => 'btn btn-primary formulario-updated']) !!}
+                                                        <a class="btn btn-primary btn-rounded"
+                                                            href="{{ route('studentss.index') }}">Back</a>
+
+
+                                                        {!! Form::close() !!}
+                                                    </div>
+                                                </div>
                                             </div>
                                             <!-- /.card-body -->
                                         </div>
@@ -60,37 +127,4 @@
         <!-- /.content -->
 
     </div>
-@endsection
-
-@section('js')
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    @if (session('delete') == 'OK')
-        <script>
-            Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
-                'success'
-            )
-        </script>
-    @endif
-
-    <script>
-        $('.formulario-eliminar').submit(function(e) {
-            e.preventDefault();
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    this.submit();
-                }
-            })
-        });
-    </script>
 @endsection

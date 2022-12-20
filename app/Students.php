@@ -21,44 +21,26 @@ class Students extends Model
         'status',
         'pais_id',
         'provincies_id',
-        'localidad_id',
-        'direction_id',
-        'asistenc_id'
+        'localities_id',
+        'directions_id',
+        'status'
+
     ];
 
-    public function my_store($request)
-    {
-
-        self::create([
-            'name' => $request->name,
-            'surname' => $request->surname,
-            'dni' => $request->dni,
-            'date_of_birth' => $request->date_of_birth,
-            'phone' => $request->phone,
-            'email' => $request->email,
-            'date_of_address' => $request->date_of_address,
-        ]);
-    }
-
-
-    public function estado()
-    {
-        return $this->belongsTo('App\Asistence', 'asistenc_id');
-    }
     public function pais()
     {
-        return $this->belongsTo('App\Pais', 'pais_id');
+        return $this->belongsTo('App\Pais');
     }
     public function provincies()
     {
-        return $this->belongsTo('App\Provincies', 'provincies_id');
+        return $this->belongsTo('App\Provincies');
     }
-    public function localidad()
+    public function localities()
     {
-        return $this->belongsTo('App\Localidad', 'localidad_id');
+        return $this->belongsTo('App\Localidad');
     }
     public function directions()
     {
-        return $this->belongsTo('App\Direction', 'directions_id');
+        return $this->belongsTo('App\Direction');
     }
 }

@@ -1,4 +1,4 @@
-<table id="clientes" class="table table-hover">
+<table id="students" class="table table-hover">
     <thead>
         <tr>
             <th style="width: 10px"># </th>
@@ -9,6 +9,9 @@
             <th>Teléfono</th>
             <th>Correo Electronico</th>
             <th>Fecha de Inicio</th>
+            <th></th>
+            <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>

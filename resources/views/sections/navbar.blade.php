@@ -8,9 +8,7 @@
         <li class="nav-item d-none d-sm-inline-block">
             <a href="{{ route('dashboard') }}" class="nav-link">Home</a>
         </li>
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Contact</a>
-        </li>
+
     </ul>
 
     <!-- Right navbar links -->
@@ -40,26 +38,6 @@
 
 
         <!-- Messages Dropdown Menu -->
-        <li class="nav-item dropdown">
-            <a class="nav-link" data-toggle="dropdown" href="#">
-                <i class="fas fa-users"></i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                @guest
-                @else
-                    <a class="dropdown-item" href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">
-                        <i class="fas fa-power-off text-primary"></i>
-                        Logout
-                    </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
-                @endguest
-
-            </div>
-        </li>
 
     </ul>
 </nav>

@@ -34,6 +34,11 @@
                                     <div class="card_layout_header border-0 layout_title col-md-11 mx-auto px-0 pt-3">
                                         Edit a Role
                                     </div>
+                                    @if (session('Info'))
+                                        <div class="alert alert-success">
+                                            {{ session('Info') }}
+                                        </div>
+                                    @endif
                                     <div class="card-body col-md-11 mx-auto px-0 ">
                                         <div class="card card-default">
                                             <div class="card-header">

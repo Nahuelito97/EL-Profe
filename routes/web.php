@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AsistenceController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\StudentsController;
@@ -32,11 +33,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     //rutas para las demas secciones del sistema
     Route::resource('studentss', 'StudentsController');
     Route::resource('profesorss', 'ProfesorssController');
-    Route::resource('especialityy', 'EspecialityController');
+    Route::resource('especialities', 'EspecialityController');
     Route::resource('users', 'UserController');
     Route::resource('roles', 'RoleController');
     Route::resource('asistencias', 'AsistenceController');
     Route::resource('clases', 'ClasseController');
     //Route::resource('profile', 'ProfileController');
+    Route::get('change_status/asistencias/{students}', [AsistenceController::class, 'change_status'])->name('change.status.students');
 
 });

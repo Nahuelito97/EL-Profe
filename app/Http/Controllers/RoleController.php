@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
-
+use RealRashid\SweetAlert\Facades\Alert;
 
 class RoleController extends Controller
 {
@@ -17,7 +17,6 @@ class RoleController extends Controller
     public function index()
     {
         $roles = Role::all();
-
         return view('admin.roles.index', compact('roles'));
     }
 
@@ -48,7 +47,9 @@ class RoleController extends Controller
 
         $role->permissions()->sync($request->permissions); /* A la tabla intermedia le pasamos los permisos que se seleccionaron en los check. */
 
-        return redirect()->route('roles.edit', $role)->with('info', 'El rol se creó con éxito.');
+        Alert::success('Success','The role was created correctly.');
+
+        return redirect()->route('roles.index', $role);
     }
 
     /**
@@ -91,7 +92,9 @@ class RoleController extends Controller
 
         $role->permissions()->sync($request->permissions); /* A la tabla intermedia le pasamos los permisos que se seleccionaron en los check. */
 
-        return redirect()->route('roles.edit', $role)->with('info', 'El rol se actualizó con éxito.');
+        Alert::success('Info','Role updated successfully.');
+
+        return redirect()->route('roles.index', $role);
     }
 
     /**
@@ -104,7 +107,7 @@ class RoleController extends Controller
     {
         $role->delete();
 
-        return redirect()->route('roles.index')->with('info', 'El rol se eliminó con éxito.');
+        return redirect()->route('roles.index')->with('delete', 'OK');
 
     }
 }

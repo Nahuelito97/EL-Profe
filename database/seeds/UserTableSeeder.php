@@ -13,6 +13,11 @@ class UserTableSeeder extends Seeder
         'password' => bcrypt('12345'),
       ])->assignRole('SuperAdmin');
 
-    factory(User::class,5)->create(); //creo 5 usuarios en la bd
+      User::create([
+        'name' => 'Admin',
+        'email' => 'admin@gmail.com',
+        'password' => bcrypt('admin'),
+      ])->assignRole('Admin');
+
     }
 }

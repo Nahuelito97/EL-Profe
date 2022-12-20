@@ -15,7 +15,7 @@ class CreateAsistencesTable extends Migration
     {
         Schema::create('asistences', function (Blueprint $table) {
             $table->id();
-            $table->enum('status', ['Presente', 'Ausente', 'Tardanza']);
+            $table->enum('status',['AUSENTE','PRESENTE', 'TARDANZA'])->default('AUSENTE');
             $table->timestamps();
         });
     }

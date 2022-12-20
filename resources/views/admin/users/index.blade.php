@@ -36,21 +36,6 @@
                                     </div>
                                     <div class="card-body col-md-11 mx-auto px-0 ">
                                         <div class="card card-default">
-                                            <div class="card-header">
-                                                <div class="card-tools">
-                                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                                        <i class="fas fa-minus"></i>
-                                                    </button>
-                                                </div>
-                                                <div class="form-inline">
-                                                    <form class="form-inline">
-                                                        <input name="buscarpor" type="search" class="form-control mr-sm-1"
-                                                            placeholder="Search User" aria-label="Search">
-                                                        <button class="btn btn-outline-success my-2 my-sm-0"
-                                                            type="submit">Buscar</button>
-                                                    </form>
-                                                </div>
-                                            </div>
                                             <div class="card-body">
                                                 @if (count($users))
                                                     @include('admin.users.table')

@@ -11,10 +11,7 @@
                         <p> > Dashboard <span class="ml-2"> > Students</span></p>
                     </div>
                 </div><!-- /.row -->
-                <div class="callout callout-info">
-                    <h5><i class="fas fa-info"></i> Note:</h5>
-                    This page has been enhanced for printing. Click the print button at the bottom of the invoice to test.
-                  </div>
+
                 <div class="col-md-11 mx-auto pt-2 pb-2 px-0 d-flex align-items-center justify-content-between"
                     style="height: 60px">
                     <h1 class="section_title mb-0">Students</h1>
@@ -58,12 +55,6 @@
                                                     <div><span>No data</span></div>
                                                 @endif
                                             </div>
-                                            <nav aria-label="Page navigation example">
-                                                <ul class="pagination justify-content-center">
-                                                    {{ $studentss->links() }}
-                                                </ul>
-                                              </nav>
-
                                         </div>
                                     </div>
                                 </div>

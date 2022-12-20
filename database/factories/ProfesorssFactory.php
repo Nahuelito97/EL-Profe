@@ -7,18 +7,19 @@ use Faker\Generator as Faker;
 
 $factory->define(Profesorss::class, function (Faker $faker) {
     return [
-        'name' => $faker->word(50),
+        'name' => $faker->name,
         'surname' => $faker->word(50),
         'dni' => $faker->ean8,
         'date_of_birth' => $faker->date($format = 'Y-m-d', $max = 'now'),
         'phone' => $faker->e164PhoneNumber,
         'email' => $faker->unique()->safeEmail,
         'date_of_address' => $this->faker->date($format = 'Y-m-d', $max = 'now'),
-        'especiality_id' => $faker->numberBetween(1, 20),
-        'pais_id' => $faker->numberBetween(1, 5),
-        'provincy_id' => $faker->numberBetween(1, 23),
-        'locality_id' => $faker->numberBetween(1, 100),
-        'direction_id' => $faker->numberBetween(1, 100),
+        'especialitis_id' => factory(\App\Especiality::class),
+        'pais_id' => 1,
+        'provincies_id' => 1,
+        'localities_id' => $faker->numberBetween(1, 46),
+        'directions_id' => $faker->numberBetween(1, 5),
+
     ];
 });
 

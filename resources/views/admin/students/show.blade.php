@@ -78,15 +78,13 @@
                                                                             <h5>
                                                                                 </h2>
                                                                                 <ul class="ml-4 mb-0 fa-ul text-muted">
-                                                                                    <li class="small"><span
-                                                                                            class="fa-li"><i
-                                                                                                class="fas fa-lg fa-building"></i></span>
+                                                                                    <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span>
                                                                                         <b>Country:</b>
                                                                                         {{ $studentss->pais->name }}
                                                                                         <b>Address:</b>
                                                                                         {{ $studentss->provincies->name }},
-                                                                                        {{ $studentss->localidad->name }},
-                                                                                        {{ $studentss->localidad->cod_post }},
+                                                                                        {{ $studentss->localities->name }},
+                                                                                        {{ $studentss->localities->cod_post }},
 
                                                                                         {{ $studentss->directions->name }},
                                                                                         {{ $studentss->directions->number }}

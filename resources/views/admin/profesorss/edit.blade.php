@@ -113,9 +113,9 @@
 
                                                         </div>
 
-                                                        {!! Form::submit('Actualizar profesor', ['class' => 'btn btn-primary']) !!}
+                                                        {!! Form::submit('Update Profesor', ['class' => 'btn btn-primary']) !!}
                                                         <a class="btn btn-primary btn-rounded"
-                                                            href="{{ route('profesorss.index') }}">Volver</a>
+                                                            href="{{ route('profesorss.index') }}">Back</a>
 
 
                                                         {!! Form::close() !!}

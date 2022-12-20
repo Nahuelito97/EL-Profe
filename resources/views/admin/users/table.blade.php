@@ -4,9 +4,8 @@
             <th scope="col" class="table_head_label px-1 col-1 col-md-1 text-center">ID</th>
             <th scope="col" class="table_head_label px-1 col-1 col-md-1 text-center">Name</th>
             <th scope="col" class="table_head_label px-1 col-1 col-md-1 text-center">Mail</th>
-            @if (@Auth::user()->hasAnyRole('SuperAdmin'))
-                <th scope="col" class="table_head_label px-1 col-1 col-md-1 text-center">Actions</th>
-            @endif
+            <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -16,21 +15,18 @@
                 <th scope="row" class="col-1 col-md-1 px-1 text-center">{{ $user->name }}</th>
                 <th scope="row" class="col-1 col-md-1 px-1 text-center">{{ $user->email }}</th>
                 <td class="d-flex">
-                    @if (@Auth::user()->hasAnyRole('SuperAdmin'))
-                        <a href="{{ route('users.edit', [$user->id]) }}" class="mr-1 btn btn-sm btn-primary"
-                            title="Editar"> <i class="fas fa-edit"></i> </a>
+                    <a href="{{ route('users.edit', [$user->id]) }}" class="mr-1 btn btn-sm btn-primary" title="Editar">
+                        <i class="fas fa-edit"></i> </a>
 
-                        <form action="{{ route('users.destroy', [$user->id]) }}" class="mr-1"
-                            method="POST" title="Eliminar">
-                            @method('DELETE')
-                            @csrf
-                            <button type="submit" class="btn btn-sm btn-danger"
-                                onclick="return confirm('Delete Student {{ $user->name }}?')"
-                                title="Delete Student"> <i class="fas fa-trash"></i> </button>
-                        </form>
-                    @endif
+                    <form action="{{ route('users.destroy', [$user->id]) }}" class="mr-1" method="POST"
+                        title="Eliminar">
+                        @method('DELETE')
+                        @csrf
+                        <button type="submit" class="btn btn-sm btn-danger"
+                            onclick="return confirm('Delete Student {{ $user->name }}?')" title="Delete Student"> <i
+                                class="fas fa-trash"></i> </button>
+                    </form>
                 </td>
-
             </tr>
         @endforeach
     </tbody>

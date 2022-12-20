@@ -8,18 +8,17 @@ use Faker\Generator as Faker;
 $factory->define(Students::class, function (Faker $faker) {
     return [
 
-        'name' => $faker->word(50),
-        'surname' => $faker->word(50),
+        'name' => $faker->name,
+        'surname' => $faker->surname,
         'dni' => $faker->ean8,
         'date_of_birth' => $faker->date($format = 'Y-m-d', $max = 'now'),
         'phone' => $faker->e164PhoneNumber,
         'email' => $faker->unique()->safeEmail,
         'date_of_address' => $this->faker->date($format = 'Y-m-d', $max = 'now'),
-        'pais_id' => $faker->numberBetween(1, 5),
-        'provincies_id' => $faker->numberBetween(1, 23),
-        'localidad_id' => $faker->numberBetween(1, 100),
-        'directions_id' => $faker->numberBetween(1, 100),
-        //'asistenc_id' => $faker->numberBetween(1, 3),
-
+        'pais_id' => 1,
+        'provincies_id' => 1,
+        'localities_id' => $faker->numberBetween(1, 46),
+        'directions_id' => $faker->numberBetween(1, 5),
+        'status' => 'AUSENTED',
     ];
 });

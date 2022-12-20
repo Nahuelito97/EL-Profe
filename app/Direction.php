@@ -8,11 +8,6 @@ class Direction extends Model
 {
 
     protected $fillable = [
-        'name', 'number',
+        'name', 'number'
     ];
-
-    public function directions()
-    {
-        return $this->belongsTo('App\Students');
-    }
 }

@@ -15,7 +15,11 @@
                 <div class="col-md-11 mx-auto pt-2 pb-2 px-0 d-flex align-items-center justify-content-between"
                     style="height: 60px">
                     <h1 class="section_title mb-0">Students Asistences</h1>
-
+                    @if (session('Info'))
+                    <div class="alert alert-success">
+                        {{ session('Info') }}
+                    </div>
+                @endif
                 </div>
             </div><!-- /.container-fluid -->
         </div>
@@ -56,4 +60,37 @@
         </section>
     <!-- /.content -->
     </div>
+@endsection
+
+@section('js')
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @if (session('updated') == 'OK')
+        <script>
+            Swal.fire(
+                'Updated!',
+                'The student was successfully updated.',
+                'success'
+            )
+        </script>
+    @endif
+
+    <script>
+        $('.formulario-eliminar').submit(function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.submit();
+                }
+            })
+        });
+    </script>
 @endsection

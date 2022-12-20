@@ -7,11 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Provincies extends Model
 {
     protected $fillable = [
-        'name',
+        'name'
     ];
-
-    public function provincies()
-    {
-        return $this->belongsTo('App\Students');
-    }
 }

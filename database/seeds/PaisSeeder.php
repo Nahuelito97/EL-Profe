@@ -1,8 +1,7 @@
 <?php
 
-use App\Pais;
 use Illuminate\Database\Seeder;
-
+use Illuminate\Support\Facades\DB;
 class PaisSeeder extends Seeder
 {
     /**
@@ -12,7 +11,11 @@ class PaisSeeder extends Seeder
      */
     public function run()
     {
-        factory(Pais::class,5)->create();
+        DB::table('pais')->insert([
+            [
+                'name' => 'Argentina',
+            ]
+        ]);
 
     }
 }

@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Especiality;
+use Illuminate\Support\Facades\DB;
 
 class EspecialitySeeder extends Seeder
 {
@@ -12,6 +13,18 @@ class EspecialitySeeder extends Seeder
      */
     public function run()
     {
-        factory(Especiality::class,30)->create();
+        DB::table('especialities')->insert([
+            [
+                'name' => 'DEPORTES'
+            ],[
+                'name' => 'ECONOMIA Y NEGOCIOS'
+            ],[
+                'name' => 'ENTRETENIMIENTO'
+            ],[
+                'name' => 'FAMILIA Y BIENESTAR'
+            ],[
+                'name' => 'HOGAR Y DECORACION'
+            ]
+        ]);
     }
 }

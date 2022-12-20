@@ -2,6 +2,8 @@
 
 use App\Provincies;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
 
 class ProvinciesSeeder extends Seeder
 {
@@ -12,7 +14,11 @@ class ProvinciesSeeder extends Seeder
      */
     public function run()
     {
-        factory(Provincies::class,23)->create();
-
+        DB::table('provincies')->insert([
+            [
+                'pais_id' => 1,
+                'name' => 'Misiones'
+            ]
+        ]);
     }
 }
