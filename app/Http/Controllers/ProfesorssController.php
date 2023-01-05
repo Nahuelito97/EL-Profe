@@ -3,83 +3,102 @@
 namespace App\Http\Controllers;
 
 use App\Profesorss;
+use App\Direction;
+use App\Pais;
+use App\Localidad;
+use App\Provincies;
+use App\Especiality;
 use Illuminate\Http\Request;
+use Session;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class ProfesorssController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $country = Pais::all();
+        $province = Provincies::all();
+        $localities = Localidad::all();
+        $directions = Direction::all();
+        $especialitis = Especiality::all();
+
+        $profesorss = Profesorss::orderBy('id', 'ASC')->paginate(5);
+        return view(
+            'admin.profesorss.index',
+            compact(
+                'profesorss',
+                'country',
+                'province',
+                'localities',
+                'directions'
+            )
+        );
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
-        //
+        $country = Pais::all();
+        $province = Provincies::all();
+        $localities = Localidad::all();
+        $directions = Direction::all();
+        $especialitis = Especiality::all();
+
+        return view('admin.profesorss.create',
+            compact('country', 'province', 'localities', 'directions', 'especialitis')
+    );
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request){
+
+        $request->validate([                        /* Agregamos reglas de validación para el formulario. */
+            'name' => 'required|max:255',
+            'surname' => 'required|max:255',
+            'dni' => 'required|unique:students|min:8|max:8',
+            'date_of_birth' => 'required|date|before_or_equal:today',
+            'phone' => 'bail|required|unique:students|min:13|max:13',
+            'email' => 'required||unique:students,email',
+            'date_of_address' => 'required|date',
+            'pais_id' => 'required',
+            'provincies_id' => 'required',
+            'localities_id' => 'required',
+            'directions_id' => 'required',
+            'especialitis_id' => 'required'
+        ]);
+
+
+
+       $profesorss = Profesorss::create($request->all());
+
+        return redirect()->route('profesorss.index', $profesorss);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Profesorss  $profesorss
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(Profesorss $profesorss)
     {
-        //
+        return view('admin.profesorss.show', compact('profesorss'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Profesorss  $profesorss
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Profesorss $profesorss)
     {
-        //
+        return view('admin.profesorss.edit', compact('profesorss'));
+        return redirect(route('admin.profesorss.index'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Profesorss  $profesorss
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, Profesorss $profesorss)
     {
-        //
+        $profesorss->update($request->all());
+
+        Alert::success('Info', 'The profesor was successfully updated.');
+        return redirect()->route('profesorss.index', $profesorss);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Profesorss  $profesorss
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Profesorss $profesorss)
+    public function destroy($id)
     {
-        //
+        $profesorss = Profesorss::find($id);
+        $profesorss->delete();
+        return redirect(route('profesorss.index'))->with('delete', 'OK');
     }
 }
