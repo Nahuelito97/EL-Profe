@@ -82,6 +82,7 @@ class ProfesorssController extends Controller
 
     public function edit(Profesorss $profesorss)
     {
+        dd($profesorss);
         return view('admin.profesorss.edit', compact('profesorss'));
         return redirect(route('admin.profesorss.index'));
     }

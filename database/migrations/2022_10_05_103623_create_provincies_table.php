@@ -20,7 +20,8 @@ class CreateProvinciesTable extends Migration
             $table->unsignedBigInteger('pais_id');
             $table->foreign('pais_id')->references('id')->on('pais');
 
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
         });
     }
 

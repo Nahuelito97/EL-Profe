@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AsistenceController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProvinciaController;
 
 use App\Http\Controllers\StudentsController;
 /*
@@ -33,12 +34,30 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     //rutas para las demas secciones del sistema
     Route::resource('studentss', 'StudentsController');
     Route::resource('profesorss', 'ProfesorssController');
-    Route::resource('especialities', 'EspecialityController');
+    Route::resource('especialities', 'EspecialityesController');
+    Route::resource('todos', 'PaisController');
+    Route::resource('provincias', 'ProvinciaController');
     Route::resource('users', 'UserController');
     Route::resource('roles', 'RoleController');
     Route::resource('asistencias', 'AsistenceController');
     Route::resource('clases', 'ClasseController');
     //Route::resource('profile', 'ProfileController');
     Route::get('change_status/asistencias/{students}', [AsistenceController::class, 'change_status'])->name('change.status.students');
+
+
+    //------Todos/Paises
+    Route::get('todos/{todo}/edit', 'PaisController@edit');
+    Route::post('todos/store', 'PaisController@store');
+    Route::delete('todos/destroy/{todo}', 'PaisController@destroy');
+    //------
+
+
+
+    //----Provincias--
+    /*Route::get('create', 'ProvinciaController@create')->name('provincias.create');
+    Route::post('create', 'ProvinciaController@store')->name('provincias.store');
+    Route::get('show/{provincias}', 'ProvinciaController@edit')->name('provincias.edit');
+    Route::put('provincias/{provincias}', 'ProvinciaController@update')->name('provincias.update');
+    Route::put('destroy/{provincias}', 'ProvinciaController@destroy')->name('provincias.destroy');*/
 
 });

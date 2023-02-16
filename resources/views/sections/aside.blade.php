@@ -47,11 +47,21 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
-                            Estudiantes/Alumnos
+                            Estudiantes
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('studentss.create') }}"
+                                class="nav-link {{ request()->is('admin/studentss*') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-tags"></i>
+                                <p>
+                                   + Estudiantes
+                                </p>
+                            </a>
+                        </li>
+
                         <li class="nav-item">
                             <a href="{{ route('studentss.index') }}"
                                 class="nav-link {{ request()->is('admin/studentss*') ? 'active' : '' }}">
@@ -83,11 +93,11 @@
                         </li>
                     </ul>
                 </li>
+
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-users"></i>
-                        <p>
-                            Especilidades
+                        <i class="nav-icon fas fa-edit"></i>                        <p>
+                            Parametros
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
@@ -101,23 +111,6 @@
                                 </p>
                             </a>
                         </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-edit"></i>
-                        <p>
-                            Clases
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="pages/forms/general.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Courses</p>
-                            </a>
-                        </li>
                         <li class="nav-item">
                             <a href="{{ route('asistencias.index') }}"
                                 class="nav-link {{ request()->is('admin/users*') ? 'active' : '' }}">
@@ -128,9 +121,27 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ route('todos.index') }}"
+                                class="nav-link {{ request()->is('admin/users*') ? 'active' : '' }}">
+                                <i class="fas fa-user-cog"></i>
+                                <p>
+                                    Pais
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('provincias.index') }}"
+                                class="nav-link {{ request()->is('admin/users*') ? 'active' : '' }}">
+                                <i class="fas fa-user-cog"></i>
+                                <p>
+                                    Provincias
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="pages/forms/editors.html" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Editors</p>
+                                <p>Ciudades</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -141,6 +152,7 @@
                         </li>
                     </ul>
                 </li>
+
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-cogs"></i>

@@ -21,7 +21,7 @@ class CreateStudentsTable extends Migration
             $table->date('date_of_birth');
             $table->string('phone')->nullable()->unique();
             $table->string('email')->nullable()->unique();
-            $table->date('date_of_address');
+
 
             $table->unsignedBigInteger('pais_id');
             $table->foreign('pais_id')->references('id')->on('pais');
@@ -36,9 +36,10 @@ class CreateStudentsTable extends Migration
             $table->foreign('directions_id')->references('id')->on('directions');
             $table->enum('status',['AUSENTE','PRESENTE', 'TARDANZA'])->default('AUSENTE');
 
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
 
             $table->softDeletes();
-            $table->timestamps();
         });
     }
 

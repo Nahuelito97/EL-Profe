@@ -30,7 +30,7 @@ class Profesorss extends Model
      {
          return $this->belongsTo('App\Especiality');
      }
-     public function pais()
+    public function pais()
     {
         return $this->belongsTo('App\Pais');
     }

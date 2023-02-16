@@ -49,13 +49,35 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                {!! Form::open(['route' => 'especialities.store']) !!}
+                                                <form action="{{ route('especialities.store') }}" method="POST">
+                                                    @csrf
+                                                    <div class="card-body">
 
-                                                @include('admin.especialities.partials')
+                                                        <div class="form-group">
+                                                            <label for="name">Nombre</label>
+                                                            <input type="name" name="name" class="form-control" id="name" placeholder="Ingrese un nombre para la especialidad">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="exampleInputPassword1">Descripción  </label>
+                                                            <textarea name="description" id="description" rows="4" class="form-control"
+                                                                placeholder="Ingrese la descripción para la especialidad"></textarea>
+                                                        </div>
+                                                    </div>
 
-                                                {!! Form::submit('Create Especiality', ['class' => 'btn btn-primary']) !!}
-
-                                                {!! Form::close() !!}
+                                                    <div class="row mt-2">
+                                                        <div class="col d-flex align-items-center justify-content-end">
+                                                            <button type="reset" class="btn btn-info btn-rounded"
+                                                                style="margin-right: 20px;"><i
+                                                                    class="zmdi zmdi-roller"></i> &nbsp;&nbsp;
+                                                                Limpiar</button>
+                                                            <button type="submit" class="btn btn-primary btn-rounded "><i
+                                                                    class="zmdi zmdi-floppy"></i> &nbsp;&nbsp; + Registrar
+                                                                Alumno</button>
+                                                        </div>
+                                                        <a type="button" class="btn btn-primary btn-rounded"
+                                                        href="{{ route('especialities.index') }}">Back</a>
+                                                    <div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
