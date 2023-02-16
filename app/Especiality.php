@@ -6,9 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Especiality extends Model
 {
-
-
     protected $fillable = [
-        'name',
+        'id', 'name', 'description',
     ];
+
+    public function my_store($request)
+    {
+
+        self::create([
+            'name' => $request->name,
+            'description' => $request->description,
+        ]);
+    }
+
+
 }

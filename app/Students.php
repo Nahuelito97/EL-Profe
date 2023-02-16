@@ -17,7 +17,6 @@ class Students extends Model
         'date_of_birth',
         'phone',
         'email',
-        'date_of_address',
         'status',
         'pais_id',
         'provincies_id',

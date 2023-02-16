@@ -1,4 +1,4 @@
-<table id="students" class="table table-hover">
+<table id="" class="table table-hover">
     <thead>
         <tr>
             <th style="width: 10px"># </th>

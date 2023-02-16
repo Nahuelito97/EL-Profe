@@ -60,12 +60,12 @@ class StudentsController extends Controller
             'date_of_birth' => 'required|date|before_or_equal:today',
             'phone' => 'bail|required|unique:students|min:13|max:13',
             'email' => 'required||unique:students,email',
-            'date_of_address' => 'required|date',
             'pais_id' => 'required',
             'provincies_id' => 'required',
             'localities_id' => 'required',
             'directions_id' => 'required'
         ]);
+
 
         $studentss = Students::create($request->all());
 
@@ -83,6 +83,7 @@ class StudentsController extends Controller
 
     public function edit(Students $studentss)
     {
+        dd($studentss);
         return view('admin.students.edit', compact('studentss'));
         return redirect(route('studentss.index'));
     }

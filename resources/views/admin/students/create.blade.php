@@ -316,7 +316,7 @@
                                                         <div class="col-md-6">
                                                             <div class="form-group layout_subtitle">
                                                                 {!! htmlspecialchars_decode(
-                                                                    Form::label('date_of_address', 'DateOfAdress <span>*</span>', ['class' => 'layout_subtitle']),
+                                                                    Form::label('', 'DateOfAdress <span>*</span>', ['class' => 'layout_subtitle']),
                                                                 ) !!}
                                                                 {{ Form::date('date_of_address', $studentss ?? (('')->date_of_address ?? null), ['id' => 'date_of_address', 'placeholder' => 'Add a finish date',
                                                                 'max' => "2022-22-12", 'class' => 'form-control']) }}

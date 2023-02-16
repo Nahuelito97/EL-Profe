@@ -48,8 +48,41 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                @if (count($especiality))
-                                                    @include('admin.especialities.table')
+                                                @if (count($especialitiesss))
+                                                <table class="table table-hover border-0 w-100 responsive" id="especialities">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>Name</th>
+                                                            <th>Desciption</th>
+                                                            <th></th>
+                                                        </tr>
+                                                    </thead>
+
+                                                    <tbody>
+                                                        @foreach ($especialitiesss as $especialities)
+                                                            <tr>
+                                                                <td>{{$especialities->id}}</td>
+                                                                <td>{{$especialities->name}}</td>
+                                                                <td>{{$especialities->description}}</td>
+
+                                                                <td class="d-flex">
+                                                                    <a href="{{ route('especialities.edit', [$especialities->id]) }}" class="mr-1 btn btn-sm btn-primary"  title="Edit">Edit</a>
+                                                                    <form action="{{ route('especialities.destroy', [$especialities->id]) }}" class="mr-1 formulario-eliminar"
+                                                                        method="POST" title="Delete">
+                                                                        @method('DELETE')
+                                                                        @csrf
+                                                                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                                    </form>
+
+                                                                    {{-- <a href="{{ route('category.show', [$category->id]) }}" class="mr-1 btn btn-sm btn-success"> <i class="fas fa-eye"></i> </a> --}}
+                                                                </td>
+
+                                                            </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
+
                                                 @else
                                                     <div><span>No data</span></div>
                                                 @endif
@@ -67,4 +100,37 @@
         </section>
         <!-- /.content -->
     </div>
+@endsection
+
+@section('js')
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @if (session('delete') == 'OK')
+        <script>
+            Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+            )
+        </script>
+    @endif
+
+    <script>
+        $('.formulario-eliminar').submit(function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.submit();
+                }
+            })
+        });
+    </script>
 @endsection

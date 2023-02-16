@@ -13,18 +13,6 @@ class EspecialitySeeder extends Seeder
      */
     public function run()
     {
-        DB::table('especialities')->insert([
-            [
-                'name' => 'DEPORTES'
-            ],[
-                'name' => 'ECONOMIA Y NEGOCIOS'
-            ],[
-                'name' => 'ENTRETENIMIENTO'
-            ],[
-                'name' => 'FAMILIA Y BIENESTAR'
-            ],[
-                'name' => 'HOGAR Y DECORACION'
-            ]
-        ]);
+        factory(Especiality::class, 20)->create();
     }
 }
