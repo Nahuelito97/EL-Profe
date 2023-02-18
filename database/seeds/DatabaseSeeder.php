@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
         $this->call(LocalidadSeeder::class);
         $this->call(DirectionSeeder::class);
         $this->call(EspecialitySeeder::class);
+        $this->call(TelefonoSeeder::class);
+        $this->call(GeneroSeeder::class);
         $this->call(ProfesorssSeeder::class);
         $this->call(StudentsSeeder::class);
 

@@ -19,9 +19,13 @@ class CreateStudentsTable extends Migration
             $table->string('surname');
             $table->string('dni', 8);
             $table->date('date_of_birth');
-            $table->string('phone')->nullable()->unique();
             $table->string('email')->nullable()->unique();
 
+            $table->unsignedBigInteger('telefono_id');
+            $table->foreign('telefono_id')->references('id')->on('telefonos');
+
+            $table->unsignedBigInteger('genero_id');
+            $table->foreign('genero_id')->references('id')->on('generos');
 
             $table->unsignedBigInteger('pais_id');
             $table->foreign('pais_id')->references('id')->on('pais');

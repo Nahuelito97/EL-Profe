@@ -50,7 +50,6 @@ class EspecialityesController extends Controller
     }
 
 
-
     public function destroy($id)
     {
         $especialities = Especiality::find($id);

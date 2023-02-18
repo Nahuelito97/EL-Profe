@@ -8,13 +8,13 @@
                 <div class="row mb-2">
 
                     <div class="col-md-11 mx-auto px-0 dashboard_route">
-                        <p> > Dashboard <span class="ml-2"> >Provincias</span><span class="ml-2"></span></p>
+                        <p> > Dashboard <span class="ml-2"> >Ciudades</span><span class="ml-2"></span></p>
 
                     </div>
                 </div><!-- /.row -->
                 <div class="col-md-11 mx-auto pt-2 pb-2 px-0 d-flex align-items-center justify-content-between"
                     style="height: 60px">
-                    <h1 class="section_title mb-0">Provincias</h1>
+                    <h1 class="section_title mb-0">Ciudades</h1>
                 </div>
             </div><!-- /.container-fluid -->
         </div>
@@ -31,11 +31,10 @@
                             <div class="col-md-12 card-body pt-3">
                                 <div class="card_layout pt-3">
                                     <div class="card_layout_header border-0 layout_title col-md-11 mx-auto px-0 pt-3">
-                                        Provincias List
+                                        Lista de Ciudades
                                         @if (@Auth::user()->hasAnyRole('SuperAdmin'))
-                                            <a class="btn btn-primary button_theme float-right"
-                                                href="{{ route('provincias.create') }}">+
-                                                Create New</a>
+                                        <a class="btn btn-primary button_theme float-right" href="{{ route('cities.create') }}">+
+                                            Create New</a>
                                         @endif
                                     </div>
                                     <br>
@@ -49,43 +48,43 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                @if (count($provinciass))
-                                                    <table class="table table-hover border-0 w-100 responsive"
-                                                        id="especialities">
-                                                        <thead>
+                                                @if (count($localidadess))
+                                                <table class="table table-hover border-0 w-100 responsive" id="especialities">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>Name</th>
+                                                            <th>CP</th>
+                                                            <th>Provincia</th>
+                                                            <th>Acciones</th>
+                                                        </tr>
+                                                    </thead>
+
+                                                    <tbody>
+                                                        @foreach ($localidadess as $localidades)
                                                             <tr>
-                                                                <th>#</th>
-                                                                <th>Name</th>
-                                                                <th>Country</th>
-                                                                <th>Acciones</th>
+                                                                <td>{{$localidades->id}}</td>
+                                                                <td>{{$localidades->name}}</td>
+                                                                <td>{{$localidades->cod_post}}</td>
+                                                                <td>{{$localidades->provincies->name}}</td>
+
+                                                                <td class="d-flex">
+                                                                    <a href="{{ route('cities.edit', [$localidades->id]) }}" class="mr-1 btn btn-sm btn-primary"  title="Edit">Edit</a>
+                                                                    <form action="{{ route('cities.destroy', [$localidades->id]) }}" class="mr-1 formulario-eliminar"
+                                                                        method="POST" title="Delete">
+                                                                        @method('DELETE')
+                                                                        @csrf
+                                                                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                                    </form>
+
+                                                                    {{-- <a href="{{ route('category.show', [$category->id]) }}" class="mr-1 btn btn-sm btn-success"> <i class="fas fa-eye"></i> </a> --}}
+                                                                </td>
+
                                                             </tr>
-                                                        </thead>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
 
-                                                        <tbody>
-                                                            @foreach ($provinciass as $provincias)
-                                                                <tr>
-                                                                    <td>{{ $provincias->id }}</td>
-                                                                    <td>{{ $provincias->name }}</td>
-                                                                    <td>{{ $provincias->pais->name }}</td>
-
-                                                                    <td class="d-flex">
-                                                                        <a href="{{ route('provincias.edit', [$provincias->id]) }}"
-                                                                            class="mr-1 btn btn-sm btn-primary"
-                                                                            title="Edit">Edit</a>
-                                                                        <form
-                                                                            action="{{ route('provincias.destroy', [$provincias->id]) }}"
-                                                                            class="mr-1 formulario-eliminar" method="POST"
-                                                                            title="Delete">
-                                                                            @method('DELETE')
-                                                                            @csrf
-                                                                            <button type="submit"
-                                                                                class="btn btn-sm btn-danger">Delete</button>
-                                                                        </form>
-                                                                    </td>
-                                                                </tr>
-                                                            @endforeach
-                                                        </tbody>
-                                                    </table>
                                                 @else
                                                     <div><span>No data</span></div>
                                                 @endif
@@ -104,7 +103,6 @@
         <!-- /.content -->
     </div>
 @endsection
-
 
 @section('js')
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

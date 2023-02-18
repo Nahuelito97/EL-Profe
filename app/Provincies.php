@@ -15,4 +15,14 @@ class Provincies extends Model
     {
         return $this->belongsTo('App\Pais');
     }
+
+
+
+    public function my_store($request)
+    {
+        self::create([
+            'name' => $request->name,
+            'pais_id' => $request->pais_id,
+        ]);
+    }
 }

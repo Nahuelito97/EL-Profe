@@ -54,13 +54,26 @@
                                                     <div class="card-body">
 
                                                         <div class="form-group">
-                                                            <label for="name">Nombre</label>
-                                                            <input type="name" name="name" class="form-control" id="name" placeholder="Ingrese un nombre para la especialidad">
+                                                            <label for="name" class="control-label text-semibold">Nombre</label>
+                                                            <input type="name" name="name" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Ingrese un nombre para la ciudad">
+                                                            @error('name')
+                                                                <span class="invalid-feedback"
+                                                                    role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="exampleInputPassword1">Descripción  </label>
-                                                            <textarea name="description" id="description" rows="4" class="form-control"
+                                                            <label for="exampleInputPassword1" class="control-label text-semibold">Descripción </label>
+                                                            <textarea name="description" id="description" rows="4" class="form-control @error('provincies_id') is-invalid @enderror"
                                                                 placeholder="Ingrese la descripción para la especialidad"></textarea>
+
+                                                                @error('description')
+                                                                <span class="invalid-feedback"
+                                                                    role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
                                                         </div>
                                                     </div>
 

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Pais;
 use App\Provincies;
 use Illuminate\Http\Request;
+use App\Http\Requests\Provincia\UpdateRequest;
+use App\Http\Requests\Provincia\StoreRequest;
 use RealRashid\SweetAlert\Facades\Alert;
 
 
@@ -29,33 +31,27 @@ class ProvinciaController extends Controller
     );
     }
 
-    public function store(Request $request){
+    public function store(StoreRequest $request, Provincies $provincias)
+    {
+        $provincias->my_store($request);
+        Alert::success('Success','The Province was created correctly.');
 
-        $request->validate([ /* Agregamos reglas de validación para el formulario. */
-            'name' => 'required|max:255',
-            'pais_id' => 'required',
-        ]);
-
-       $provincias = Provincies::create($request->all());
-
-        return redirect()->route('provincias.index', $provincias);
+        return redirect()->back();
     }
 
-    public function edit(Provincies $provincias)
+    public function edit($id)
     {
-        return view('admin.provincias.edit', compact('provincias'));
-        return redirect(route('provincias.index'));
+        $countrys = Pais::all();
+        $provincias = Provincies::find($id);
+        return view('admin.provincias.edit', compact('provincias', 'countrys'));
     }
 
-
-    public function update(Request $request, Provincies $provincias)
+    public function update(UpdateRequest $request, $id)
     {
+        $provincias = Provincies::find($id);
         $provincias->update($request->all());
-        Alert::success('Info', 'The student was successfully updated.');
-
-        return redirect(route('provincias.index'));
+        return redirect(route('provincias.index')); //
     }
-
 
     public function destroy($id)
     {

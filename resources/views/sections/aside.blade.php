@@ -55,7 +55,7 @@
                         <li class="nav-item">
                             <a href="{{ route('studentss.create') }}"
                                 class="nav-link {{ request()->is('admin/studentss*') ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-tags"></i>
+                                <i class="fas fa-user-plus"></i>
                                 <p>
                                    + Estudiantes
                                 </p>
@@ -65,7 +65,7 @@
                         <li class="nav-item">
                             <a href="{{ route('studentss.index') }}"
                                 class="nav-link {{ request()->is('admin/studentss*') ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-tags"></i>
+                                <i class="fas fa-user"></i>
                                 <p>
                                     Estudiantes
                                 </p>
@@ -85,7 +85,7 @@
                         <li class="nav-item">
                             <a href="{{ route('profesorss.index') }}"
                                 class="nav-link {{ request()->is('admin/profesorss*') ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-tags"></i>
+                                <i class="fas fa-user"></i>
                                 <p>
                                     Profesores
                                 </p>
@@ -123,7 +123,7 @@
                         <li class="nav-item">
                             <a href="{{ route('todos.index') }}"
                                 class="nav-link {{ request()->is('admin/users*') ? 'active' : '' }}">
-                                <i class="fas fa-user-cog"></i>
+                                <i class="fas fa-flag"></i>
                                 <p>
                                     Pais
                                 </p>
@@ -132,16 +132,19 @@
                         <li class="nav-item">
                             <a href="{{ route('provincias.index') }}"
                                 class="nav-link {{ request()->is('admin/users*') ? 'active' : '' }}">
-                                <i class="fas fa-user-cog"></i>
+                                <i class="fas fa-flag"></i>
                                 <p>
                                     Provincias
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/forms/editors.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Ciudades</p>
+                            <a href="{{ route('cities.index') }}"
+                                class="nav-link {{ request()->is('admin/users*') ? 'active' : '' }}">
+                                <i class="fas fa-flag"></i>
+                                <p>
+                                    Provincias
+                                </p>
                             </a>
                         </li>
                         <li class="nav-item">

@@ -37,6 +37,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('especialities', 'EspecialityesController');
     Route::resource('todos', 'PaisController');
     Route::resource('provincias', 'ProvinciaController');
+    Route::resource('cities', 'LocalidadesController');
     Route::resource('users', 'UserController');
     Route::resource('roles', 'RoleController');
     Route::resource('asistencias', 'AsistenceController');
