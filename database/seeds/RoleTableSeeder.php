@@ -36,5 +36,7 @@ class RoleTableSeeder extends Seeder
       Permission::create(['name' => 'admin.especialityy.edit', 'description' => 'Editar especialidad'])->syncRoles([$role1]);
       Permission::create(['name' => 'admin.especialityy.destroy', 'description' => 'Eliminar especialidad'])->syncRoles([$role1, $role2]);
 
+      Permission::create(['name' => 'admin.users.destroy', 'description' => 'delete users'])->syncRoles([$role1]);
+
     }
 }

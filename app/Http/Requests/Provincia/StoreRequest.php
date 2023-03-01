@@ -3,16 +3,22 @@
 namespace App\Http\Requests\Provincia;
 
 use Illuminate\Foundation\Http\FormRequest;
-
+use Illuminate\Validation\Rule;
 class StoreRequest extends FormRequest
-{
-    public function rules()
+{   
+    public function authorize()
     {
+        return true;
+    }
+
+    public function rules()
+    {      
         return [
             'name' => 'required|max:30',
-            'pais_id' => 'required',
+            'pais_id' => 'required',                        
         ];
     }
+
     public function messages()
     {
         return[

@@ -18,6 +18,8 @@ class CreatePaisTable extends Migration
             $table->string('name');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
+
+            $table->softDeletes();
         });
     }
 

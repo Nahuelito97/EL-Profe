@@ -16,7 +16,7 @@ class StoreRequest extends FormRequest
         return [
             'name'=>'string|required|max:255',
             'dni'=>'string|required|unique:students|min:8|max:8',
-            'phone'=>'string|nullable|unique:students|min:9|max:9',
+            'telefono'=>'string|nullable|unique:students|min:9|max:9',
             'email'=>'string|nullable|unique:students|max:255|email:rfc,dns',
         ];
     }
@@ -34,10 +34,10 @@ class StoreRequest extends FormRequest
             'dni.max'=>'Solo se permite 8 caracteres.',
 
 
-            'phone.string'=>'El valor no es correcto.',
-            'phone.unique'=>'El número de celular ya se encuentra registrado.',
-            'phone.min'=>'Se requiere de 9 caracteres.',
-            'phone.max'=>'Solo se permite 9 caracteres.',
+            'telefono.string'=>'El valor no es correcto.',
+            'telefono.unique'=>'El número de celular ya se encuentra registrado.',
+            'telefono.min'=>'Se requiere de 9 caracteres.',
+            'telefono.max'=>'Solo se permite 9 caracteres.',
 
             'email.string'=>'El valor no es correcto.',
             'email.unique'=>'La dirección de correo electrónico ya se encuentra registrada.',

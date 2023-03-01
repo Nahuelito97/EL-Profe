@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Pais;
+use App\Http\Requests\Especiality\StoreRequest;
+use App\Http\Requests\Especiality\UpdateRequest;
 use Illuminate\Http\Request;
-//use RealRashid\SweetAlert\Facades\Alert;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 class PaisController extends Controller
@@ -12,29 +14,49 @@ class PaisController extends Controller
 {
     public function index()
     {
-        return view('admin.pais.index',['todos'=>Pais::orderBy('id','ASC')->get()]);
+        $countrys = Pais::orderBy('id', 'ASC')->paginate(10);
+        return view('admin.pais.index', compact('countrys'));
     }
 
-    public function edit(Pais $todo)
+    public function create()
     {
-        return response()->json($todo);
+        return view('admin.pais.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreRequest $request, Pais $country)
     {
-        $todo = Pais::updateOrCreate(
-            ['id'=>$request->id],
-            ['name'=>$request->name]
-        );
+        $country->my_store($request);
+        Alert::success('Success','El País se creo correctamente.');
 
-        return response()->json($todo);
-
+        return redirect()->back();
     }
 
-    public function destroy(Pais $todo)
+
+    public function show(Pais $country)
     {
-        $todo->delete();
-        return response()->json('success');
+        return view('admin.pais.show', compact('country'));
+    }
+
+    public function edit($id)
+    {
+        $country = Pais::find($id);
+        return view('admin.pais.edit', compact('country'));
+    }
+
+    public function update(UpdateRequest $request, $id)
+    {
+        $country = Pais::find($id);
+        $country->update($request->all());
+        Alert::success('Info','El País se modifico correctamente.');
+        return redirect(route('todos.index'));
+    }
+
+
+    public function destroy($id)
+    {
+        $country = Pais::find($id);
+        $country->delete();
+        return redirect(route('todos.index'))->with('delete', 'OK');
     }
 
 }

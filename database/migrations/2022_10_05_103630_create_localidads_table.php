@@ -21,7 +21,10 @@ class CreateLocalidadsTable extends Migration
             $table->unsignedBigInteger('provincies_id');
             $table->foreign('provincies_id')->references('id')->on('provincies');
 
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
+
+            $table->softDeletes();
         });
     }
 

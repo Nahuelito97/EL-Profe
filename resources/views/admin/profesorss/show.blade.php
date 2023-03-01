@@ -6,17 +6,18 @@
     <div class="content-wrapper">
         <div class="content-header pt-3 pb-3 px-0 bg-white">
             <div class="container-fluid">
-                <div class="row mb-2">
 
-                    <div class="col-md-11 mx-auto px-0 dashboard_route">
-                        <p> > Dashboard <span class="ml-2"> > Profesors</span><span class="ml-2"> >Edit</span></p>
-
+                <div class="callout callout-info">
+                    <div class="col-xs-12 col-sm-4 col-md-3">
+                        <img src="{{ asset('front-end/assets/img/user03.png') }}" alt="user"
+                            class="img-responsive center-box" style="max-width: 110px;">
                     </div>
-                </div><!-- /.row -->
-                <div class="col-md-11 mx-auto pt-2 pb-2 px-0 d-flex align-items-center justify-content-between"
-                    style="height: 60px">
-                    <h1 class="section_title mb-0">Profesors</h1>
-
+                    <div class="col-xs-12 col-sm-8 col-md-8 text-justify lead">
+                        <h4>
+                            Bienvenido a la sección donde podra ver la información adicional del Profesor.
+                        </h4>
+                        <br>
+                    </div>
                 </div>
             </div><!-- /.container-fluid -->
         </div>
@@ -27,96 +28,81 @@
             <div class="container-fluid">
                 <div class="card_layout pb-5 pt-3">
 
-                    <div class="col-md-12 card bg-white mx-auto card_list border-0">
+                    <div class="col-md-8 card bg-white mx-auto card_list border-0">
                         <div class="table-responsive">
                             <div class="col-md-12 card-body pt-3">
                                 <div class="card_layout pt-3">
-                                    <div class="card_layout_header border-0 layout_title col-md-11 mx-auto px-0 pt-3">
-                                        Profesor Info
-
-                                    </div>
+                                    <h5>Información del Profesor</h5>
                                     <div class="card-body col-md-11 mx-auto px-0 ">
-                                        <div class="card card-default">
-                                            <div class="card-header">
-                                                <div class="card-tools">
-                                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                                        <i class="fas fa-minus"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div
-                                                        class="col-12 col-sm-12 col-md-12 d-flex align-items-stretch flex-column">
-                                                        <div class="card bg-light d-flex flex-fill">
-                                                            <div class="card-header text-muted border-bottom-0">
-
-                                                                <h2 class="lead"><b> {{ $profesorss->name }}</b></h2>
-                                                            </div>
-                                                            <div class="card-body pt-0">
-                                                                <div class="row">
-                                                                    <div class="col-7">
-                                                                        <p class="text-muted text-sm">
-                                                                            <b>Surname: </b> {{ $profesorss->surname }}
-                                                                        </p>
-                                                                        <p class="text-muted text-sm">
-                                                                            <b>Dni: </b> {{ $profesorss->dni }}
-                                                                        </p>
-                                                                        <p class="text-muted text-sm">
-                                                                            <b>DateofBirth:
-                                                                            </b>{{ date('d-m-Y', strtotime($profesorss->date_of_birth)) }}
-                                                                        </p>
-                                                                        <p class="text-muted text-sm">
-                                                                            <b>Email: </b>{{ $profesorss->email }}
-                                                                        </p>
-                                                                        <p class="text-muted text-sm">
-                                                                            <b>DateofAdress:
-                                                                            </b> {{ date('d-m-Y', strtotime($profesorss->date_of_address)) }}
-                                                                        </p>
-                                                                        <p class="text-muted text-sm">
-                                                                            <b>Especiality:
-                                                                            </b> {{ ($profesorss->especialitis->name) }}
-                                                                        </p>
-                                                                        <h5>
-                                                                            </h2>
-                                                                            <h5>
-                                                                                </h2>
-                                                                                <ul class="ml-4 mb-0 fa-ul text-muted">
-                                                                                    <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span>
-                                                                                        <b>Country:</b>
-                                                                                        {{ $profesorss->pais->name }}
-                                                                                        <b>Address:</b>
-                                                                                        {{ $profesorss->provincies->name }},
-                                                                                        {{ $profesorss->localities->name }},
-                                                                                        {{ $profesorss->localities->cod_post }},
-
-                                                                                        {{ $profesorss->directions->name }},
-                                                                                        {{ $profesorss->directions->number }}
+                                        <div class="row">
+                                            <div class="col-md-8 grid-margin mx-auto px-0 ">
+                                                <div class="card text-center">
+                                                    <div class="card-body">
+                                                        <img src="{{ asset('admilt/dist/img/img/user02.png') }}"
+                                                            class="img-lg rounded-circle mb-2" alt="profile image" />
+                                                        <h4>{{ $profesorss->name }}</h4>
+                                                        <p class="text-muted">Profesor</p>
 
 
-                                                                                    </li>
-                                                                                    <li class="small"><span
-                                                                                            class="fa-li"><i
-                                                                                                class="fas fa-lg fa-phone"></i></span>
-                                                                                        <b>Phone</b> #:
-                                                                                        {{ $profesorss->phone }}
-                                                                                    </li>
-                                                                                </ul>
-                                                                    </div>
-                                                                    <div class="col-5 text-center">
-                                                                        <img src="{{ asset('admilt/dist/img/img/user02.png') }}"
-                                                                            alt="pdf" class="img-responsive center-box"
-                                                                            style="max-width: 250px;">
+                                                        <div class="border-top pt-3">
+                                                            <div class="row">
+                                                                <h5>Datos Personales</h5>
+                                                                <div class="border-bottom py-4">
+
+                                                                    <div>
+                                                                        <label class="badge badge-outline-dark"><b>Apellido:
+                                                                            </b> {{ $profesorss->surname }}</label>
+                                                                        <label class="badge badge-outline-dark"><b>Dni: </b>
+                                                                            {{ $profesorss->dni }}</label>
+                                                                        <label class="badge badge-outline-dark">
+                                                                            <b>Fecha de Nacimiento:
+                                                                            </b>{{ date('d-m-Y', strtotime($profesorss->date_of_birth)) }}</label>
+                                                                        <label class="badge badge-outline-dark"><b>Correo:
+                                                                            </b>{{ $profesorss->email }}</label>
+                                                                        <label class="badge badge-outline-dark"><b>Fecha de
+                                                                                Ingreso:
+                                                                            </b>
+                                                                            {{ date('d-m-Y', strtotime($profesorss->created_at)) }}</label>
+
+                                                                        <label class="badge badge-outline-dark">
+                                                                            <b>Pais:</b>
+                                                                            @if (!empty($profesorss->pais))
+                                                                                {{ $profesorss->pais->name }}
+                                                                            @endif
+                                                                        </label>
+                                                                        <label class="badge badge-outline-dark"><b>Provincia:
+                                                                            </b>
+                                                                            @if (!empty($profesorss->provincies))
+                                                                                {{ $profesorss->provincies->name }}
+                                                                            @endif
+
+
+                                                                        </label>
+                                                                        <label class="badge badge-outline-dark">
+                                                                            <b>Localidad:
+                                                                            </b>
+                                                                            @if (!empty($profesorss->localities))
+                                                                                {{ $profesorss->localities->name }}
+                                                                            @endif
+                                                                        </label>
+                                                                        <label class="badge badge-outline-dark"><b>Especiaidad:
+                                                                        </b>
+                                                                        @if (!empty($profesorss->especialitis))
+                                                                            {{ $profesorss->especialitis->name }}
+                                                                        @endif
+
+
+                                                                    </label>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <br>
+                                                        <a class="btn btn-primary btn-rounded"
+                                                            href="{{ route('profesorss.index') }}">Volver</a>
                                                     </div>
                                                 </div>
-                                                <a class="btn btn-primary btn-rounded"
-                                                href="{{ route('profesorss.index') }}">Back</a>
                                             </div>
-
                                         </div>
                                     </div>
 

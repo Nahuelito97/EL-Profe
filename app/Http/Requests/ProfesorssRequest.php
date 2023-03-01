@@ -25,7 +25,6 @@ class ProfesorssRequest extends FormRequest
             'date_of_birth' => 'required|date|before_or_equal:today',
             'phone' => 'bail|required|unique:students|min:13|max:13',
             'email' => 'required||unique:students,email',
-            'date_of_address' => 'required|date',
         ];
     }
 

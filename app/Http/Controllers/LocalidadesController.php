@@ -13,7 +13,9 @@ class LocalidadesController extends Controller
 {
     public function index()
     {
-        $provincias = Provincies::all();
+    
+
+        $provincias = Provincies::all();      
         $localidadess = Localidad::orderBy('id', 'ASC')->paginate(100);
         return view('admin.ciudades.index', compact('provincias', 'localidadess'));
     }

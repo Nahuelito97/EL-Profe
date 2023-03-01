@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Especiality extends Model
 {
+    use SoftDeletes;
     protected $fillable = [
         'id', 'name', 'description',
     ];

@@ -31,27 +31,31 @@ Auth::routes();
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/dashboard','DashboardController@index')->name('dashboard')->middleware('can:admin.dashboard');
 
-    //rutas para las demas secciones del sistema
-    Route::resource('studentss', 'StudentsController');
-    Route::resource('profesorss', 'ProfesorssController');
-    Route::resource('especialities', 'EspecialityesController');
-    Route::resource('todos', 'PaisController');
-    Route::resource('provincias', 'ProvinciaController');
-    Route::resource('cities', 'LocalidadesController');
-    Route::resource('users', 'UserController');
-    Route::resource('roles', 'RoleController');
-    Route::resource('asistencias', 'AsistenceController');
-    Route::resource('clases', 'ClasseController');
+    //rutas para las demas secciones del sistema $this->middleware('auth', ['except' => ['index', 'show']]);
+    Route::resource('studentss', 'StudentsController')->middleware('auth');
+    Route::resource('profesorss', 'ProfesorssController')->middleware('auth');
+    Route::resource('especialities', 'EspecialityesController')->middleware('auth');
+    Route::resource('todos', 'PaisController')->middleware('auth');
+    Route::resource('provincias', 'ProvinciaController')->middleware('auth');
+    Route::resource('cities', 'LocalidadesController')->middleware('auth');
+    Route::resource('materias', 'MateriasController')->middleware('auth');
+    Route::resource('users', 'UserController')->middleware('auth');
+    Route::resource('roles', 'RoleController')->middleware('auth');
+    Route::resource('asistencias', 'AsistenceController')->middleware('auth');
+    Route::resource('clases', 'ClasseController')->middleware('auth');
     //Route::resource('profile', 'ProfileController');
-    Route::get('change_status/asistencias/{students}', [AsistenceController::class, 'change_status'])->name('change.status.students');
+    Route::get('/profile', 'UserController@profile')->name('users.profile')->middleware('auth');
+    Route::post('/profile', 'UserController@profile_update')->name('users.profile.update')->middleware('auth');
+    Route::get('change_status/asistencias/{students}', [AsistenceController::class, 'change_status'])->name('change.status.students')->middleware('auth');
 
 
     //------Todos/Paises
+    /*
     Route::get('todos/{todo}/edit', 'PaisController@edit');
     Route::post('todos/store', 'PaisController@store');
     Route::delete('todos/destroy/{todo}', 'PaisController@destroy');
     //------
-
+*/
 
 
     //----Provincias--

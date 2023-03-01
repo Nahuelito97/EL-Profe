@@ -1,22 +1,24 @@
 @extends('layouts.app')
 
+@section('title', 'Crear Especialidades')
 
 @section('content')
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <div class="content-header pt-3 pb-3 px-0 bg-white">
             <div class="container-fluid">
-                <div class="row mb-2">
 
-                    <div class="col-md-11 mx-auto px-0 dashboard_route">
-                        <p> > Dashboard <span class="ml-2"> > Especiality/span><span class="ml-2"> > Create New</span></p>
-
+                <div class="callout callout-info">
+                    <div class="col-xs-12 col-sm-4 col-md-3">
+                        <img src="{{ asset('front-end/assets/img/section.png') }}" alt="user"
+                            class="img-responsive center-box" style="max-width: 110px;">
                     </div>
-                </div><!-- /.row -->
-                <div class="col-md-11 mx-auto pt-2 pb-2 px-0 d-flex align-items-center justify-content-between"
-                    style="height: 60px">
-                    <h1 class="section_title mb-0">Especiality</h1>
-
+                    <div class="col-xs-12 col-sm-8 col-md-8 text-justify lead">
+                        <h4>
+                            Bienvenido a la sección donde podra crear una nueva especialidad..
+                        </h4>
+                        <br>
+                    </div>
                 </div>
             </div><!-- /.container-fluid -->
         </div>
@@ -31,66 +33,21 @@
                         <div class="table-responsive">
                             <div class="col-md-12 card-body pt-3">
                                 <div class="card_layout pt-3">
-                                    <div class="card_layout_header border-0 layout_title col-md-11 mx-auto px-0 pt-3">
-                                        Create a Especiality
-                                    </div>
+                                    <h5>Crear una Especialidad</h5>
                                     @if (session('Success'))
                                         <div class="alert alert-success">
                                             {{ session('Success') }}
                                         </div>
                                     @endif
-                                    <div class="card-body col-md-11 mx-auto px-0 ">
-                                        <div class="card card-default">
-                                            <div class="card-header">
-                                                <div class="card-tools">
-                                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                                        <i class="fas fa-minus"></i>
-                                                    </button>
+                                    <div class="card-body col-md-12 mx-auto px-0 ">
+                                        <div class="row">
+                                            <div class="col-md-12 grid-margin mx-auto px-0 ">
+                                                <div
+                                                    class="card_layout_header border-0 layout_title col-md-11 mx-auto px-0 pt-3">
+                                                    <h5>
+                                                        Campos Requeridos <span class="text-danger">*</span></h5>
                                                 </div>
-                                            </div>
-                                            <div class="card-body">
-                                                <form action="{{ route('especialities.store') }}" method="POST">
-                                                    @csrf
-                                                    <div class="card-body">
-
-                                                        <div class="form-group">
-                                                            <label for="name" class="control-label text-semibold">Nombre</label>
-                                                            <input type="name" name="name" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Ingrese un nombre para la ciudad">
-                                                            @error('name')
-                                                                <span class="invalid-feedback"
-                                                                    role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="exampleInputPassword1" class="control-label text-semibold">Descripción </label>
-                                                            <textarea name="description" id="description" rows="4" class="form-control @error('provincies_id') is-invalid @enderror"
-                                                                placeholder="Ingrese la descripción para la especialidad"></textarea>
-
-                                                                @error('description')
-                                                                <span class="invalid-feedback"
-                                                                    role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row mt-2">
-                                                        <div class="col d-flex align-items-center justify-content-end">
-                                                            <button type="reset" class="btn btn-info btn-rounded"
-                                                                style="margin-right: 20px;"><i
-                                                                    class="zmdi zmdi-roller"></i> &nbsp;&nbsp;
-                                                                Limpiar</button>
-                                                            <button type="submit" class="btn btn-primary btn-rounded "><i
-                                                                    class="zmdi zmdi-floppy"></i> &nbsp;&nbsp; + Registrar
-                                                                Alumno</button>
-                                                        </div>
-                                                        <a type="button" class="btn btn-primary btn-rounded"
-                                                        href="{{ route('especialities.index') }}">Back</a>
-                                                    <div>
-                                                </form>
+                                                @include('admin.especialities.partials')
                                             </div>
                                         </div>
                                     </div>

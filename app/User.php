@@ -6,15 +6,23 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class User extends Authenticatable
 {
     use HasRoles;
     use Notifiable;
-
+    use SoftDeletes;
 
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'surname',
+        'dni',
+        'date_of_birth',
+        'phone',
+        'email',
+        'password',
     ];
 
     /**

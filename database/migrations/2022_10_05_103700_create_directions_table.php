@@ -22,7 +22,10 @@ class CreateDirectionsTable extends Migration
             $table->unsignedBigInteger('localidad_id');
             $table->foreign('localidad_id')->references('id')->on('localidads');
 
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
+
+            $table->softDeletes();
         });
     }
 

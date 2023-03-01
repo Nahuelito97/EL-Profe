@@ -11,8 +11,6 @@ use App\Http\Requests\Student\UpdateeRequest;
 use App\Http\Requests\StudentsRequest;
 use App\Localidad;
 use App\Provincies;
-use App\Telefono;
-use App\Genero;
 use RealRashid\SweetAlert\Facades\Alert;
 use Carbon\Carbon;
 
@@ -25,8 +23,6 @@ class StudentsController extends Controller
         $province = Provincies::all();
         $localities = Localidad::all();
         $directions = Direction::all();
-        $telefono = Telefono::all();
-        $genero = Genero::all();
 
         $studentss = Students::orderBy('id', 'ASC')->Paginate(5);
         return view(
@@ -36,9 +32,7 @@ class StudentsController extends Controller
                 'country',
                 'province',
                 'localities',
-                'directions',
-                'telefono',
-                'genero'
+                'directions'
             )
         );
     }
@@ -50,12 +44,10 @@ class StudentsController extends Controller
         $province = Provincies::all();
         $localities = Localidad::all();
         $directions = Direction::all();
-        $telefono = Telefono::all();
-        $genero = Genero::all();
 
         return view(
             'admin.students.create',
-            compact('country', 'province', 'localities', 'directions', 'telefono', 'genero')
+            compact('country', 'province', 'localities', 'directions')
         );
     }
 
@@ -66,9 +58,8 @@ class StudentsController extends Controller
             'surname' => 'required|max:255',
             'dni' => 'required|unique:students|min:8|max:8',
             'date_of_birth' => 'required|date|before_or_equal:today',
+            'phone' => 'bail|required|unique:students|min:13|max:13',
             'email' => 'required||unique:students,email',
-            'telefono_id' => 'required',
-            'genero_id' => 'required',
             'pais_id' => 'required',
             'provincies_id' => 'required',
             'localities_id' => 'required',
@@ -91,9 +82,12 @@ class StudentsController extends Controller
     }
 
     public function edit(Students $studentss)
-    {
-
-        return view('admin.students.edit', compact('studentss'));
+    {   
+        $country = Pais::all();
+        $province = Provincies::all();
+        $localities = Localidad::all();
+        $directions = Direction::all();
+        return view('admin.students.edit', compact('studentss','country', 'province', 'localities', 'directions'));
         return redirect(route('studentss.index'));
     }
 

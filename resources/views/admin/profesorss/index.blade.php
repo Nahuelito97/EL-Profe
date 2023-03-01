@@ -5,16 +5,22 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <div class="content-header pt-3 pb-3 px-0 bg-white">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-md-11 mx-auto px-0 dashboard_route">
-                        <p> > Dashboard <span class="ml-2"> > Profesors</span></p>
-                    </div>
-                </div><!-- /.row -->
-
+            <div class="container-fluid">            
                 <div class="col-md-11 mx-auto pt-2 pb-2 px-0 d-flex align-items-center justify-content-between"
                     style="height: 60px">
                     <h1 class="section_title mb-0">Profesors</h1>
+                </div>
+                <div class="callout callout-info">
+                    <div class="col-xs-12 col-sm-4 col-md-3">
+                        <img src="{{ asset('front-end/assets/img/user03.png') }}" alt="user"
+                            class="img-responsive center-box" style="max-width: 110px;">
+                    </div>
+                    <div class="col-xs-12 col-sm-8 col-md-8 text-justify lead">
+                        <h4>
+                            Bienvenido a la sección donde se encuentra el listado de los profesores que forman parte de la institución.
+                        </h4>
+                        <br>
+                    </div>
                 </div>
             </div><!-- /.container-fluid -->
         </div>
@@ -41,75 +47,7 @@
                                     <br>
                                     <div class="card-body col-md-11 mx-auto px-0 ">
                                         <div class="card card-default">
-                                            <div class="card-header">
-                                                <div class="card-tools">
-                                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                                        <i class="fas fa-minus"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="card-body">
-                                                @if (count($profesorss))
-                                                <table class="table table-hover border-0 w-100 responsive" id="especialities">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>#</th>
-                                                            <th>Name</th>
-                                                            <th>Surname</th>
-                                                            <th>Phone</th>
-                                                            <th>Email</th>
-                                                            <th>Acciones</th>
-                                                        </tr>
-                                                    </thead>
-
-                                                    <tbody>
-                                                        @foreach ($profesorss as $profesors)
-                                                                <tr>
-                                                                    <th>
-                                                                        {{ $profesors->id }}</th>
-                                                                    <td>{{ $profesors->name }}</td>
-
-                                                                    <td>
-                                                                        {{ $profesors->surname }}}}
-                                                                    </td>
-                                                                    <td>
-                                                                        {{ $profesors->telefono->caracteristica }}
-                                                                        {{ $profesors->telefono->numero }}
-                                                                    </td>
-                                                                    <td>
-                                                                        {{ $profesors->email }}
-                                                                    </td>
-                                                                    <td class="d-flex">
-
-                                                                        <a href="{{ route('profesorss.show', [$profesors->id]) }}"
-                                                                            class="mr-1 btn btn-sm btn-success"
-                                                                            title="Show">Show</a>
-
-                                                                        <a href="{{ route('profesorss.edit', [$profesors->id]) }}"
-                                                                            class="mr-1 btn btn-sm btn-primary"
-                                                                            title="Edit">Edit</a>
-
-                                                                        <form
-                                                                            action="{{ route('profesorss.destroy', [$profesors->id]) }}"
-                                                                            class="mr-1 formulario-eliminar" method="POST"
-                                                                            title="Delete">
-                                                                            @method('DELETE')
-                                                                            @csrf
-                                                                            <button type="submit"
-                                                                                class="btn btn-sm btn-danger">Delete</button>
-                                                                        </form>
-
-
-                                                                    </td>
-
-                                                                </tr>
-                                                            @endforeach
-                                                    </tbody>
-                                                </table>
-                                                @else
-                                                    <div><span>No data</span></div>
-                                                @endif
-                                            </div>
+                                           @include('admin.profesorss.table')
                                         </div>
                                     </div>
                                 </div>

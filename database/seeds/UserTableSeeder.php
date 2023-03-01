@@ -8,16 +8,13 @@ class UserTableSeeder extends Seeder
 {
     public function run(){
       User::create([
-        'name' => 'Nahuel Wagner',
+        'name' => 'Nahuel',
+        'surname' => 'Wagner',
+        'dni' => '43204307',
+        'date_of_birth' => new DateTime('now'),
+        'phone' => '+543751696734',
         'email' => 'elprofe@gmail.com',
         'password' => bcrypt('12345'),
       ])->assignRole('SuperAdmin');
-
-      User::create([
-        'name' => 'Admin',
-        'email' => 'admin@gmail.com',
-        'password' => bcrypt('admin'),
-      ])->assignRole('Admin');
-
     }
 }

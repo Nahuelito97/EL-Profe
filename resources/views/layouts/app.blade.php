@@ -2,57 +2,163 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ config('app.name', 'El-Profe') }}</title>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('admilt') }}/plugins/fontawesome-free/css/all.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Tempusdominus Bootstrap 4 -->
-    <link rel="stylesheet"
-        href="{{ asset('admilt') }}/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="{{ asset('admilt') }}/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-    <!-- JQVMap -->
-    <link rel="stylesheet" href="{{ asset('admilt') }}/plugins/jqvmap/jqvmap.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('admilt') }}/dist/css/adminlte.min.css">
-    <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="{{ asset('admilt') }}/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-    <!-- Daterange picker -->
-    <link rel="stylesheet" href="{{ asset('admilt') }}/plugins/daterangepicker/daterangepicker.css">
-    <!-- summernote -->
-    <link rel="stylesheet" href="{{ asset('admilt') }}/plugins/summernote/summernote-bs4.min.css">
-
-
-
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <!-- Favicon  -->
     <link rel="icon" href="{{ asset('melody/images/institution.jpg') }}">
 
-    <link rel="stylesheet" href="  https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">
 
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>El Profe</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="{{ asset('melody') }}/vendors/iconfonts/font-awesome/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('melody') }}/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="{{ asset('melody') }}/vendors/css/vendor.bundle.addons.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="{{ asset('melody') }}/css/style.css">
+    <!-- endinject -->
+
+    @yield('css')
 
 </head>
 
 
-<body class="hold-transition sidebar-mini layout-fixed">
+<body>
+    <div class="container-scroller sidebar-dark">
+        <!-- partial:partials/_navbar.html -->
+        <!-- partial:../../partials/_navbar.html -->
+        <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row default-layout-navbar">
+            <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+                <div class="profile-image">
+                    <img src="{{ asset('melody/images/institution.jpg') }}" alt="image"
+                        alt="logo"class="brand-image img-circle elevation-3" style="opacity: .8" width="40"
+                        height="40" class="brand-image img-circle elevation-3" style="opacity: .8" />
+                </div>
+                <a href="{{ route('dashboard') }}" class="navbar-brand brand-logo">
+                    <span style="margin-top: 8px; margin-left:7px; color:white; font-size:20px">
+                        <span class="text-danger">{</span><span class="text-uppercase">
+                            El-Profe
+                        </span><span class="text-danger">}</span>
+                    </span>
+                </a>
 
-    <div class="wrapper">
-        @include('sections.navbar')
-        @include('sections.aside')
-        @yield('content')
-        @include('sections.footer')
+            </div>
+            <div class="navbar-menu-wrapper d-flex align-items-stretch">
+                <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                    <span class="fas fa-bars"></span>
+                </button>
 
+                <ul class="navbar-nav navbar-nav-right">
+
+                    <li class="nav-item nav-profile dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
+                            id="profileDropdown">
+                            <img src="{{ Auth::user()->image }}" alt="profile" />
+
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
+                            aria-labelledby="profileDropdown">
+
+                            <div class="dropdown-divider"></div>
+                            @guest
+                            @else
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                                    <i class="fas fa-power-off text-primary"></i>
+                                    Logout
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            @endguest
+                        </div>
+                    </li>
+                    <li class="nav-item nav-settings d-none d-lg-block">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </a>
+                    </li>
+                </ul>
+                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+                    data-toggle="offcanvas">
+                    <span class="fas fa-bars"></span>
+                </button>
+            </div>
+        </nav>
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper">
+            <!-- partial:partials/_settings-panel.html -->
+            <div class="theme-setting-wrapper">
+                <!-- <div id="settings-trigger"><i class="fas fa-fill-drip"></i></div> -->
+                <div id="theme-settings" class="settings-panel">
+                    <i class="settings-close fa fa-times"></i>
+                    <p class="settings-heading">SIDEBAR SKINS</p>
+                    <div class="sidebar-bg-options selected" id="sidebar-light-theme">
+                        <div class="img-ss rounded-circle bg-light border mr-3"></div>Light
+                    </div>
+                    <div class="sidebar-bg-options" id="sidebar-dark-theme">
+                        <div class="img-ss rounded-circle bg-dark border mr-3"></div>Dark
+                    </div>
+                    <p class="settings-heading mt-2">HEADER SKINS</p>
+                    <div class="color-tiles mx-0 px-4">
+                        <div class="tiles primary"></div>
+                        <div class="tiles success"></div>
+                        <div class="tiles warning"></div>
+                        <div class="tiles danger"></div>
+                        <div class="tiles info"></div>
+                        <div class="tiles dark"></div>
+                        <div class="tiles default"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- partial:partials/_sidebar.html -->
+
+
+            @include('sections.aside')
+
+
+            <!-- partial -->
+            <div class="main-panel">
+                @yield('content')
+                <div class="content-wrapper">
+
+                </div>
+                <!-- content-wrapper ends -->
+                <!-- partial:partials/_footer.html -->
+
+                @include('sections.footer')
+                <!-- partial -->
+            </div>
+            <!-- main-panel ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
     </div>
+    <!-- container-scroller -->
+
+    <!-- plugins:js -->
+
+    <!-- plugins:js -->
+    <script src="{{ asset('melody/vendors/js/vendor.bundle.base.js') }}"></script>
+    <script src="{{ asset('melody/vendors/js/vendor.bundle.addons.js') }}"></script>
+    <!-- endinject -->
+    <!-- inject:js -->
+    <script src="{{ asset('melody/js/off-canvas.js') }}"></script>
+    <script src="{{ asset('melody/js/hoverable-collapse.js') }}"></script>
+    <script src="{{ asset('melody/js/misc.js') }}"></script>
+    <script src="{{ asset('melody/js/settings.js') }}"></script>
+    <script src="{{ asset('melody/js/todolist.js') }}"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="{{ asset('melody/js/dashboard.js') }}"></script>
+    <!-- End custom js for this page-->
+
 
     <!-- jQuery -->
     <script src="{{ asset('admilt/plugins/jquery/jquery.min.js') }}"></script>
@@ -62,59 +168,19 @@
     <script>
         $.widget.bridge('uibutton', $.ui.button)
     </script>
-    <!-- Bootstrap 4 -->
-    <script src="{{ asset('admilt/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <!-- ChartJS -->
-    <script src="{{ asset('admilt/plugins/chart.js/Chart.min.js') }}"></script>
-    <!-- Sparkline -->
-    <script src="{{ asset('admilt/plugins/sparklines/sparkline.js') }}"></script>
-    <!-- JQVMap -->
-    <script src="{{ asset('admilt/plugins/jqvmap/jquery.vmap.min.js') }}"></script>
-    <script src="{{ asset('admilt/plugins/jqvmap/maps/jquery.vmap.usa.js') }}"></script>
-    <!-- jQuery Knob Chart -->
-    <script src="{{ asset('admilt/plugins/jquery-knob/jquery.knob.min.js') }}"></script>
-    <!-- daterangepicker -->
-    <script src="{{ asset('admilt/plugins/moment/moment.min.js') }}"></script>
-    <script src="{{ asset('admilt/plugins/daterangepicker/daterangepicker.js') }}"></script>
-    <!-- Tempusdominus Bootstrap 4 -->
-    <script src="{{ asset('admilt/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-    <!-- Summernote -->
-    <script src="{{ asset('admilt/plugins/summernote/summernote-bs4.min.js') }}"></script>
-    <!-- overlayScrollbars -->
-    <script src="{{ asset('admilt/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
-    <!-- AdminLTE App -->
-    <script src="{{ asset('admilt/dist/js/adminlte.js') }}"></script>
-    <!-- AdminLTE for demo purposes -->
-
-    <script src="{{ asset('admilt/plugins/jquery/jquery.min.js') }}"></script>
-    <!-- Bootstrap 4 -->
-    <script src="{{ asset('admilt/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <!-- SweetAlert2 -->
-    <script src="{{ asset('admilt/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
-    <!-- Toastr -->
-    <script src="{{ asset('admilt/plugins/toastr/toastr.min.js') }}"></script>
-    <!-- AdminLTE App -->
-    <script src="{{ asset('admilt/dist/js/adminlte.min.js') }}"></script>
-
-    <!-- bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
-    </script>
 
     <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
 
 
     <script>
-        $(function () {
+        $(function() {
             $("#roles").DataTable();
             $("#students").DataTable();
             $("#profesors").DataTable();
             $("#especialities").DataTable();
             $("#asistencias").DataTable();
+            $("#")
         });
     </script>
 

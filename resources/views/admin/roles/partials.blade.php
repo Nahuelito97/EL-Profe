@@ -1,5 +1,7 @@
 <div class="form-group">
-    {!! Form::label('name', 'Name') !!}
+    <label for="contraseña" class="control-label text-semibold">
+        <h5>Nombre: <span class="text-danger">*</span></h5>
+    </label>
     {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el nombre del rol']) !!}
 
     @error('name')

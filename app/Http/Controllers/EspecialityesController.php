@@ -25,9 +25,9 @@ class EspecialityesController extends Controller
     public function store(StoreRequest $request, Especiality $especialities)
     {
         $especialities->my_store($request);
-        Alert::success('Success','The especiality was created correctly.');
+        Alert::success('Success','La especialidad fue creada correctamente.');
 
-        return redirect()->back();
+        return redirect(route('especialities.index'));
     }
 
 
@@ -46,7 +46,9 @@ class EspecialityesController extends Controller
     {
         $especialities = Especiality::find($id);
         $especialities->update($request->all());
-        return redirect()->back();
+        Alert::success('Success','La especialidad fue actualizada correctamente.');
+
+        return redirect(route('especialities.index'));
     }
 
 

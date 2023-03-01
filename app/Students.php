@@ -15,10 +15,9 @@ class Students extends Model
         'surname',
         'dni',
         'date_of_birth',
+        'phone',
         'email',
         'status',
-        'telefono_id',
-        'genero_id',
         'pais_id',
         'provincies_id',
         'localities_id',
@@ -26,15 +25,6 @@ class Students extends Model
         'status'
 
     ];
-
-    public function genero(){
-        return $this->belongsTo('App\Genero');
-    }
-
-    public function telefono()
-    {
-        return $this->belongsTo('App\Telefono');
-    }
 
     public function pais()
     {

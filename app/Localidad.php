@@ -3,9 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Localidad extends Model
 {
+    use SoftDeletes;
     protected $fillable = [
         'name', 'cod_post', 'provincies_id',
     ];

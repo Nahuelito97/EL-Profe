@@ -59,7 +59,6 @@ class ProfesorssController extends Controller
             'date_of_birth' => 'required|date|before_or_equal:today',
             'phone' => 'bail|required|unique:students|min:13|max:13',
             'email' => 'required||unique:students,email',
-            'date_of_address' => 'required|date',
             'pais_id' => 'required',
             'provincies_id' => 'required',
             'localities_id' => 'required',
@@ -70,6 +69,7 @@ class ProfesorssController extends Controller
 
 
        $profesorss = Profesorss::create($request->all());
+       Alert::success('Success', 'El profesor se creo correctamente.');
 
         return redirect()->route('profesorss.index', $profesorss);
     }
@@ -82,8 +82,14 @@ class ProfesorssController extends Controller
 
     public function edit(Profesorss $profesorss)
     {
-        dd($profesorss);
-        return view('admin.profesorss.edit', compact('profesorss'));
+
+        $country = Pais::all();
+        $province = Provincies::all();
+        $localities = Localidad::all();
+        $directions = Direction::all();
+        $especialitis = Especiality::all();
+
+        return view('admin.profesorss.edit', compact('profesorss','country', 'province', 'localities', 'directions', 'especialitis'));
         return redirect(route('admin.profesorss.index'));
     }
 
@@ -92,7 +98,7 @@ class ProfesorssController extends Controller
     {
         $profesorss->update($request->all());
 
-        Alert::success('Info', 'The profesor was successfully updated.');
+        Alert::success('Info', 'El profesor fue actualziado correctamente.');
         return redirect()->route('profesorss.index', $profesorss);
     }
 

@@ -5,21 +5,22 @@
     <div class="content-wrapper">
         <div class="content-header pt-3 pb-3 px-0 bg-white">
             <div class="container-fluid">
-                <div class="row mb-2">
 
-                    <div class="col-md-11 mx-auto px-0 dashboard_route">
-                        <p> > Dashboard <span class="ml-2"> >Ciudades</span><span class="ml-2"></span></p>
-
+                <div class="callout callout-info">
+                    <div class="col-xs-12 col-sm-4 col-md-3">
+                        <img src="{{ asset('front-end/assets/img/section.png') }}" alt="user"
+                            class="img-responsive center-box" style="max-width: 110px;">
                     </div>
-                </div><!-- /.row -->
-                <div class="col-md-11 mx-auto pt-2 pb-2 px-0 d-flex align-items-center justify-content-between"
-                    style="height: 60px">
-                    <h1 class="section_title mb-0">Ciudades</h1>
+                    <div class="col-xs-12 col-sm-8 col-md-8 text-justify lead">
+                        <h4>
+                            Bienvenido a la sección donde se encuentra el listado de Ciudades..
+                        </h4>
+                        <br>
+                    </div>
                 </div>
             </div><!-- /.container-fluid -->
         </div>
         <!-- /.content-header -->
-
 
         <!-- Main content -->
         <section class="content">
@@ -31,64 +32,16 @@
                             <div class="col-md-12 card-body pt-3">
                                 <div class="card_layout pt-3">
                                     <div class="card_layout_header border-0 layout_title col-md-11 mx-auto px-0 pt-3">
-                                        Lista de Ciudades
-                                        @if (@Auth::user()->hasAnyRole('SuperAdmin'))
-                                        <a class="btn btn-primary button_theme float-right" href="{{ route('cities.create') }}">+
-                                            Create New</a>
-                                        @endif
+                                        <h5>Lista de Paises</h5>
+                                        <a class="btn btn-primary button_theme float-right btn-rounded"
+                                            href="{{ route('cities.create') }}">+
+                                            Crear Nuevo
+                                        </a>
                                     </div>
                                     <br>
                                     <div class="card-body col-md-11 mx-auto px-0 ">
                                         <div class="card card-default">
-                                            <div class="card-header">
-                                                <div class="card-tools">
-                                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                                        <i class="fas fa-minus"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="card-body">
-                                                @if (count($localidadess))
-                                                <table class="table table-hover border-0 w-100 responsive" id="especialities">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>#</th>
-                                                            <th>Name</th>
-                                                            <th>CP</th>
-                                                            <th>Provincia</th>
-                                                            <th>Acciones</th>
-                                                        </tr>
-                                                    </thead>
-
-                                                    <tbody>
-                                                        @foreach ($localidadess as $localidades)
-                                                            <tr>
-                                                                <td>{{$localidades->id}}</td>
-                                                                <td>{{$localidades->name}}</td>
-                                                                <td>{{$localidades->cod_post}}</td>
-                                                                <td>{{$localidades->provincies->name}}</td>
-
-                                                                <td class="d-flex">
-                                                                    <a href="{{ route('cities.edit', [$localidades->id]) }}" class="mr-1 btn btn-sm btn-primary"  title="Edit">Edit</a>
-                                                                    <form action="{{ route('cities.destroy', [$localidades->id]) }}" class="mr-1 formulario-eliminar"
-                                                                        method="POST" title="Delete">
-                                                                        @method('DELETE')
-                                                                        @csrf
-                                                                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                                                                    </form>
-
-                                                                    {{-- <a href="{{ route('category.show', [$category->id]) }}" class="mr-1 btn btn-sm btn-success"> <i class="fas fa-eye"></i> </a> --}}
-                                                                </td>
-
-                                                            </tr>
-                                                        @endforeach
-                                                    </tbody>
-                                                </table>
-
-                                                @else
-                                                    <div><span>No data</span></div>
-                                                @endif
-                                            </div>
+                                            @include('admin.ciudades.table')
                                         </div>
                                     </div>
                                 </div>

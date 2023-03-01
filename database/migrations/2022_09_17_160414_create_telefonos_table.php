@@ -19,6 +19,8 @@ class CreateTelefonosTable extends Migration
             $table->string('numero', 10);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
+
+            $table->softDeletes();
         });
     }
 
