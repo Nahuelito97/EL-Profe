@@ -13,11 +13,11 @@ use App\Localidad;
 use App\Provincies;
 use RealRashid\SweetAlert\Facades\Alert;
 use Carbon\Carbon;
-
+use Barryvdh\DomPDF\PDF;
 
 class StudentsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $country = Pais::all();
         $province = Provincies::all();
@@ -35,8 +35,14 @@ class StudentsController extends Controller
                 'directions'
             )
         );
+
     }
 
+    public function export(Request $request){
+
+        $studentss = Students::all();
+        return view('admin.students.pdf', compact('studentss'));
+    }
 
     public function create()
     {
@@ -82,7 +88,7 @@ class StudentsController extends Controller
     }
 
     public function edit(Students $studentss)
-    {   
+    {
         $country = Pais::all();
         $province = Provincies::all();
         $localities = Localidad::all();
@@ -107,4 +113,5 @@ class StudentsController extends Controller
         $studentss->delete();
         return redirect(route('studentss.index'))->with('delete', 'OK');
     }
+
 }

@@ -80,6 +80,25 @@
                             @endguest
                         </div>
                     </li>
+                    <li class="nav-item nav-profile dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
+                            id="profileDropdown">
+                            <img src="{{ Auth::user()->image }}" alt="profile" />
+
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
+                            aria-labelledby="profileDropdown">
+
+                            <div class="dropdown-divider"></div>
+
+                                <a class="dropdown-item" href="#"
+                                    onclick="">
+                                    <i class="fas fa-power-off text-primary"></i>
+                                    MercadoPago
+                                </a>
+
+                        </div>
+                    </li>
                     <li class="nav-item nav-settings d-none d-lg-block">
                         <a class="nav-link" href="#">
                             <i class="fas fa-ellipsis-h"></i>

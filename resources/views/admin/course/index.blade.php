@@ -2,14 +2,13 @@
 
 
 @section('content')
-    <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <div class="content-header pt-3 pb-3 px-0 bg-white">
             <div class="container-fluid">
 
                 <div class="callout callout-info">
                     <div class="col-xs-12 col-sm-4 col-md-3">
-                        <img src="{{ asset('front-end/assets/img/user03.png') }}" alt="user"
+                        <img src="{{ asset('front-end/assets/img/category.png') }}" alt="user"
                             class="img-responsive center-box" style="max-width: 110px;">
                     </div>
                     <div class="col-xs-12 col-sm-8 col-md-8 text-justify lead">
@@ -24,6 +23,7 @@
         </div>
         <!-- /.content-header -->
 
+
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
@@ -32,28 +32,11 @@
                     <div class="col-md-12 card bg-white mx-auto card_list border-0">
                         <div class="table-responsive">
                             <div class="col-md-12 card-body pt-3">
-                                <div class="card_layout pt-3">
-                                    <div class="card_layout_header border-0 layout_title col-md-11 mx-auto px-0 pt-3">
-                                        <h5>Lista Alumnos</h5>
-                                        @can('admin.studentss.create')
-                                            <a class="btn btn-primary button_theme float-right btn-rounded"
-                                                href="{{ route('studentss.create') }}">+
-                                                Create New</a>
-                                        @endcan
+                                <div class="card_layout_header border-0 layout_title col-md-11 mx-auto px-0 pt-3">
+                                    Lista de Cursos
 
-
-                                    </div>
-                                    <br>
-                                    <div class="card-body col-md-11 mx-auto px-0 ">
-                                        <div class="card card-default">
-                                            @include('admin.students.table')
-                                        </div>
-                                    </div>
-                                    <a class="btn btn-primary button_theme float-right btn-rounded"
-                                    href="{{ route('studentss.export') }}">+
-                                    Export PDF</a>
                                 </div>
-
+                                <br>
 
                             </div>
                         </div>
@@ -64,7 +47,6 @@
 
         </section>
         <!-- /.content -->
-
     </div>
 @endsection
 
@@ -74,8 +56,8 @@
     @if (session('delete') == 'OK')
         <script>
             Swal.fire(
-                'Eliminado!',
-                'Tu archivo ha sido eliminado correctamente.',
+                'Deleted!',
+                'Your file has been deleted.',
                 'success'
             )
         </script>
@@ -85,13 +67,13 @@
         $('.formulario-eliminar').submit(function(e) {
             e.preventDefault();
             Swal.fire({
-                title: 'Estas seguro?',
-                text: "No podras revertir esto!",
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Si, Eliminar!'
+                confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
                 if (result.isConfirmed) {
                     this.submit();

@@ -14,6 +14,13 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class DashboardController extends Controller
 {
+
+    public function __invoke()
+    {
+
+    }
+
+
     public function index(){
         $students =Students::all()->count();
         $profesors = Profesorss::all()->count();

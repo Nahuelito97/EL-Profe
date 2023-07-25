@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProvinciaController;
 
 use App\Http\Controllers\StudentsController;
+
+use App\Http\Controllers\CouseController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +21,8 @@ use App\Http\Controllers\StudentsController;
 Route::get('/', function () {
     return view('auth.login');
 });
+
+
 
 Auth::routes();
 
@@ -43,12 +47,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('roles', 'RoleController')->middleware('auth');
     Route::resource('asistencias', 'AsistenceController')->middleware('auth');
     Route::resource('clases', 'ClasseController')->middleware('auth');
+    Route::resource('course', 'CourseController')->middleware('auth');
     //Route::resource('profile', 'ProfileController');
     Route::get('/profile', 'UserController@profile')->name('users.profile')->middleware('auth');
     Route::post('/profile', 'UserController@profile_update')->name('users.profile.update')->middleware('auth');
     Route::get('change_status/asistencias/{students}', [AsistenceController::class, 'change_status'])->name('change.status.students')->middleware('auth');
 
-
+    Route::get('/export_pdf', 'StudentsController@export')->name('studentss.export')->middleware('auth');
     //------Todos/Paises
     /*
     Route::get('todos/{todo}/edit', 'PaisController@edit');

@@ -50,6 +50,8 @@
                     </div>
                 </li>
 
+
+
                 <li class="nav-item d-none d-lg-block">
                     <a class="nav-link" data-toggle="collapse" href="#sidebar-layouts" aria-expanded="false"
                         aria-controls="sidebar-layouts">
@@ -125,7 +127,7 @@
                     <a class="nav-link" data-toggle="collapse" href="#editors" aria-expanded="false"
                         aria-controls="editors">
                         <i class="fas fa-pen-square menu-icon"></i>
-                        <span class="menu-title">Materias</span>
+                        <span class="menu-title">Cursos</span>
                         <i class="menu-arrow"></i>
                     </a>
                     <div class="collapse" id="editors">
@@ -134,6 +136,9 @@
                                     href="{{ route('materias.create') }}">+ Materias</a></li>
                             <li class="nav-item"> <a class="nav-link {{ request()->is('admin/users*') ? 'active' : '' }}"
                                     href="{{ route('materias.index') }}">Materias</a></li>
+                            <li class="nav-item"> <a href="{{ route('course.index') }}"
+                                    class="nav-link {{ request()->is('admin/course*') ? 'active' : '' }}">Cursos </a>
+                            </li>
                         </ul>
                     </div>
                 </li>
