@@ -29,7 +29,7 @@
             </a>
         </li>
         @auth
-            @role('SuperAdmin|Admin')
+            @role('Administrador|Secretario')
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="collapse" href="#page-layouts" aria-expanded="false"
                         aria-controls="page-layouts">

@@ -1,9 +1,11 @@
 <?php
 
+namespace Database\Seeders;
+
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-
-class SetingSeeder extends Seeder
+class PaisSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,10 +14,11 @@ class SetingSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('setings')->insert([
+        DB::table('pais')->insert([
             [
-                'name' => 'El-Profe',
+                'name' => 'Argentina',
             ]
         ]);
+
     }
 }

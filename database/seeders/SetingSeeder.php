@@ -1,9 +1,12 @@
 <?php
 
+namespace Database\Seeders;
+
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class TelefonoSeeder extends Seeder
+class SetingSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,12 +15,10 @@ class TelefonoSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('telefonos')->insert([
+        DB::table('setings')->insert([
             [
-                'caracteristica' => '+54',
-                'numero' => '3755696734'
+                'name' => 'El-Profe',
             ]
         ]);
-
     }
 }

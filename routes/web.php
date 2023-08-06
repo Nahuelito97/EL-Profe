@@ -53,6 +53,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::post('/profile', 'UserController@profile_update')->name('users.profile.update')->middleware('auth');
     Route::get('change_status/asistencias/{students}', [AsistenceController::class, 'change_status'])->name('change.status.students')->middleware('auth');
 
+
+
+
     Route::get('/export_pdf', 'StudentsController@export')->name('studentss.export')->middleware('auth');
     //------Todos/Paises
     /*
